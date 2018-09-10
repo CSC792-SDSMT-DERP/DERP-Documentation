@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Scratchwork}
+
+\begin{document}
+
+\maketitle
+\section{Initial Outline}
+\begin{itemize}
+    \item Domain of Application: Filtering Web Posts (Mainly News)
+    \item Programming Paradigm: Declarative
+    \item Program Structure: Textual, Natural English
+    \item Memory Management: Automatic
+    \item Data Types: 
+    \begin{itemize}
+        \item Posting
+        \item String
+        \item Boolean
+        \item Number
+        \item DateTime
+        \item List
+    \end{itemize}
+    \item Expressions:
+    \begin{itemize}
+        \item (Find) (News articles) (on) (Reddit) (containing information) (on) (whales)
+    \end{itemize}
+    \item Variables:
+    \begin{itemize}
+        \item 
+    \end{itemize}
+\end{itemize}
+
+\section{Problem Statement}
+
+\subsection{DERP, Sept. 9, Logan Lembke}
+It would be handy to hear the news on topics I care about as I head to school.
+
+It can be hard to be specific when asking alexa/Siri/etc. to find information on the web about something. 
+
+We aim to design an application which provides users a powerful interface for searching the web with natural English. 
+
+\subsection{DERP Query Language, Sept. 9, Logan Lembke}
+
+In order to precisely describe queries executed by DERP, we must construct an easy to speak, structured query language. 
+
+
+\section{Representation}
+\subsection{Predicates, Sept. 9, Logan Lembke}
+For reddit our predicates may be backed by:
+\begin{itemize}
+    \item String search on 
+    \begin{itemize}
+        \item Title
+        \item Username
+        \item Post Tags
+        \item Content Title
+        \item Content Author
+        \item Content Body
+    \end{itemize}
+    \item Date Matching on
+    \begin{itemize}
+        \item Post Date
+        \item Content Date
+    \end{itemize}
+    \item Top N in Reddit Sort Categories
+    \begin{itemize}
+        \item Hot
+        \item Rising
+        \item Top
+        \item New
+        \item Controversial
+    \end{itemize}
+    \item Approximate? Reddit Upvote Count
+    \item Any logical combination of the above
+\end{itemize}
+
+Content searches can backed by https://mercury.postlight.com/web-parser/.
+
+In general, each of these predicates are functions of a given Reddit Post and the Mercury Web API.
+
+The backend representation should likely be a function which takes in a reddit post and returns a boolean. Then these functions could be composed and used to lazily filter a stream of reddit articles.
+
+We could abstract the providers of predicate fields into modules.
+
+\subsection{Understanding Modules, Sept. 9, Logan Lembke}
+In order to parse out new pieces of information from posts, an understanding module may be loaded. 
+
+For instance a module could be defined for the mercury api.
+
+
+\end{document}
