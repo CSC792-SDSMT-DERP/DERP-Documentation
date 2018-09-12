@@ -3,5 +3,6 @@
 # LaTeX generated
 *.aux
 *.log
-*.pdf
 *.nfs*
+*.out
+*.toc

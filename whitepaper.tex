@@ -1,5 +1,17 @@
-\documentclass{article}
+\documentclass{book}
 \usepackage[utf8]{inputenc}
+
+% Give Table of Contents Hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\pagenumbering{gobble}
+% \pagenumbering{roman} % set the numbering style to lowercase letter
 
 \title{The Dictation Evaluation Reddit Parser}
 \author{
@@ -15,28 +27,40 @@ Stelter, Andrew
 
 \maketitle
 
-\section{Introduction to DERP}
-\subsection{What is DERP: Human Queries For a Digital World}
-\subsection{DERP Origins}
-\subsection{Why DERP}
+% \newpage
+\tableofcontents
 
-\section{DERP Design Goals}
-\subsubsection{Consolidated Information (variety of subreddits/ sources)}
-\subsubsection{Easy to Use Natural English Interface}
-\subsubsection{Search More, Search Faster}
+\pagenumbering{roman}   % Set TOC page numbering to lowercase roman numerals
+\newpage
 
-\section{The DERP Execution Model}
-\subsection{Interactive}
-\subsection{Hierarchical Data (website -> boards (subreddits) -> posts}
-\subsection{Constraints}
-\subsection{Savable Criteria (data structures)}
-\subsection{Composed Constraints}
+\pagenumbering{arabic}  % Set content page numbering to arabic numerals
 
-\section{The DERP Query Language}
-\subsection{Main Features}
-\subsubsection{Primitives}
-\subsubsection{Higher Order Types...}
-\subsubsection{Memory Management}
-\subsection{DERP Operators}
+\chapter{Introduction to DERP}
+\setcounter{page}{1} % Set the page counter to 3
+Dictation Evaluation Reddit Parser -- DERP, is designed to be a Domain Specific Language -- DSL for interfacing with news, or news-like systems. The sysyem was designed as part of a group project for South Dakota School of Mines \& Technology's Compilers course.
+
+\section{What is DERP: Human Queries For a Digital World}
+test text 2
+\section{DERP Origins}
+\section{Why DERP}
+
+\chapter{DERP Design Goals}
+\section{Consolidated Information (variety of subreddits/ sources)}
+\section{Easy to Use Natural English Interface}
+\section{Search More, Search Faster}
+
+\chapter{The DERP Execution Model}
+\section{Interactive}
+\section{Hierarchical Data (website -> boards (subreddits) -> posts}
+\section{Constraints}
+\section{Savable Criteria (data structures)}
+\section{Composed Constraints}
+
+\chapter{The DERP Query Language}
+\section{Main Features}
+\subsection{Primitives}
+\subsection{Higher Order Types...}
+\subsection{Memory Management}
+\section{DERP Operators}
 
 \end{document}
