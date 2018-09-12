@@ -8,12 +8,13 @@
     citecolor=black,
     filecolor=black,
     linkcolor=black,
-    urlcolor=black
+    urlcolor=blue
 }
 \pagenumbering{gobble}
 % \pagenumbering{roman} % set the numbering style to lowercase letter
 
-\title{The Dictation Evaluation Reddit Parser}
+\title{\textbf{The Dictation Evaluation Reddit Parser}}
+
 \author{
 Garcia, Benjamin \and
 Lembke, Logan \and 
@@ -25,45 +26,81 @@ Stelter, Andrew
 
 \begin{document}
 
+\addcontentsline{toc}{section}{Title}
 \maketitle
 
 \newpage
+
 \tableofcontents
+\addcontentsline{toc}{section}{Table of Contents}
 
 \pagenumbering{roman}   % Set TOC page numbering to lowercase roman numerals
-\newpage
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% INTRO SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
 \pagenumbering{arabic}  % Set content page numbering to arabic numerals
 
-\section{Introduction to DERP}
+\section{\textbf{Introduction to DERP}}
 \setcounter{page}{1} % Set the page counter to 3
-Dictation Evaluation Reddit Parser -- DERP, is designed to be a Domain Specific Language -- DSL for interfacing with news, or news-like systems. The sysyem was designed as part of a group project for South Dakota School of Mines \& Technology's Compilers course.
-
-\newpage
+Dictation Evaluation Reddit Parser -- \href{https://gitlab.mcs.sdsmt.edu/7184015/DERP}{DERP}, is designed to be a Domain Specific Language -- \href{https://en.wikipedia.org/wiki/Domain-specific_language}{DSL} for interpretting news, or news-like websites. The sysyem was designed as part of a group project for South Dakota School of Mines \& Technology's Compilers course.
 
 \subsection{What is DERP: Human Queries For a Digital World}
-test text 2
+Time is something we are regularly lacking and it would be nice to expedite the intake of online news while doing other things such as prepparing and eating breakfast, taking a shower, getting prepared, or driving to work. We should be able to tell our phone, "What's going on in the world today?" and be able to parse through available news stories. If we want news on a specific topic such as Tesla we should be able to say, "What's in the news about Tesla?". \\ \\
+In the current form of news intake we either get it through a radio or television broadcast, an article, or a newspaper. The broadcast is rigid and we have no control over what news we hear and there are frequently topics that don't concern us. Articles and newspapers are the same way but we are able to skip what we don't like. The issue with newspapers is we are limited to what the editor decided to include. The issue with articles is tracking down relevant articles. A common way to track down interesting articles is an aggregation site such as \href{https://www.reddit.com}{reddit}, \href{https://steemit.com/}{steemit}, \href{https://band.us/home}{band}, and \href{https://voat.co/}{voat} to name a \href{https://www.reddit.com/r/RedditAlternatives/comments/8585ox/list_of_active_reddit_alternatives/}{few}.
+
 \subsection{DERP Origins}
+In the fall of 2018 we were tasked with making a DSL for a class in compiler theory. We discussed many possible topics:
+\begin{itemize}
+    \item{Constrain/Generate}
+    \begin{itemize}
+        \item{Floor Plans}
+        \item{Workout Assistant}
+        \item{Computer Part Picker}
+    \end{itemize}
+    \item{Perform a Task}
+    \begin{itemize}
+        \item{Robot "AI" Proposal by Dr. Hinker}
+        \item{Image Tx}
+    \end{itemize}
+    \item{Configure a Task}
+    \begin{itemize}
+        \item{News Reader}
+        \item{SQL Helper}        
+    \end{itemize}
+\end{itemize}
+
 \subsection{Why DERP}
 DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP 
 
-\section{DERP Design Goals}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% DESIGN GOALS SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{\textbf{DERP Design Goals}}
 \subsection{Consolidated Information (variety of subreddits/ sources)}
 \subsection{Easy to Use Natural English Interface}
 \subsection{Search More, Search Faster}
 
-\section{The DERP Execution Model}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% EXEC MODEL SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{\textbf{The DERP Execution Model}}
 \subsection{Interactive}
 \subsection{Hierarchical Data (website -> boards (subreddits) -> posts}
 \subsection{Constraints}
 \subsection{Savable Criteria (data structures)}
 \subsection{Composed Constraints}
 
-\section{The DERP Query Language}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% DQL SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{\textbf{The DERP Query Language}}
 \subsection{Main Features}
 \subsubsection{Primitives}
 \subsubsection{Higher Order Types...}
 \subsubsection{Memory Management}
-\section{DERP Operators}
+\subsection{DERP Operators}
 
 \end{document}
