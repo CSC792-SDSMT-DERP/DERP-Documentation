@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage{comment}
 
 % Give Table of Contents Hyperlinks
 \usepackage{hyperref}
@@ -72,22 +73,41 @@ In the fall of 2018 we were tasked with making a DSL for a class in compiler the
 \subsection{Why DERP}
 DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP DERP 
 
+\section{DERP Design Goals}
+\subsubsection{Consolidated Information}
+The DERP project provides an intuitive way to multiplex multiple news sources into a personalized stream of data. Using DERP, one can specify as many different sources as they want to (provided language plugins are available), and then all of those sources are accessed through the same set of language keywords, regardless of if the source is a subreddit, a news website, or just a file on the user's device. Furthermore, DERP facilitates naming groups of sources and queries to create query macros,
+\begin{comment}
+@ADS Did we actually decide on if we want savable sets of instructions other than in the form of a DERP program? (Can a program create another program?)
+\end{comment}
+allowing users to further personalize what they get out of DERP.
 
+Online news sources regularly expose the same categories of information - date, author, title - DERP acts as an interface for all different article types, allowing users to work only with this high-level information about the articles they are finding. Hiding the details of what exactly is required to find an article that matches a specific criterion allows users to focus more on what they want to read, and less on how they obtain that information.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%% DESIGN GOALS SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
-\section{\textbf{DERP Design Goals}}
-\subsection{Consolidated Information (variety of subreddits/ sources)}
-\subsection{Easy to Use Natural English Interface}
-\subsection{Search More, Search Faster}
+\subsubsection{Easy to Use Natural English Interface}
+The second goal of DERP is to design a language that won't feel strange to speak. All of the DERP keywords and syntax are similar to natural English speech patterns. This allows for easy adaptation of DERP into speech-recognition tools such as Google Assistant and Amazon Alexa. Using the natural form of the language, users with one of these devices could speak their program to the interpreter and receive their results immediately.
 
+In addition to being easy to command DERP through natural language, DERP provides output that also feels natural.
+\begin{comment}
+@ADS - Is this something we're actually doing? We've kind of had it implied
+in discussions, but never explicitly talked about it
+\end{comment}
+DERP has a set of phrases available to it for reporting errors or results from user queries. The main output from DERP, articles the user has requested, are outputted as full text so that devices reading them using a text-to-speech system sound as natural as possible.
+
+\subsubsection{Search More, Search Faster}
+By amalgamating news sources into a personalized feed, DERP allows users to find the information they want with fewer operations. Rather than check each of their favorite subreddits, news sites, and RSS feeds, a user can simply load those sources into DERP and make a general query about them. DERP will do the heavy lifting of finding things the user might be interested, which means the user will be able to spend more of their time actually consuming the information provided and deciding on new topics to get information over.
+
+Because it is an extensible language, DERP users are limited only by the language plugins they use. 
+\begin{comment}
+@ADS Is this also something we officially decided on? I felt that we were leaning toward it
+\end{comment}
+While some keywords are understood specially by the language, such as those pertaining to dates and times, any language plugin can provide additional fields and keywords, making the language flexible and powerful while keeping the complexity out of the core of the language.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% EXEC MODEL SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \section{\textbf{The DERP Execution Model}}
 \subsection{Interactive}
-\subsection{Hierarchical Data (website -> boards (subreddits) -> posts}
+\subsection{Hierarchical Data (website $\rightarrow$ boards (subreddits) $\rightarrow$ posts}
 \subsection{Constraints}
 \subsection{Savable Criteria (data structures)}
 \subsection{Composed Constraints}
