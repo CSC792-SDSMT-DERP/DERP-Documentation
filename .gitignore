@@ -1,0 +1,7 @@
+# GitIgnore
+
+# LaTeX generated
+*.aux
+*.log
+*.pdf
+*.nfs*
