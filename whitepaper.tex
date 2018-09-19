@@ -66,8 +66,9 @@ Stelter, Andrew
 Dictation Evaluation Reddit Parser -- \href{https://gitlab.mcs.sdsmt.edu/7184015/DERP}{DERP}, is designed to be a Domain Specific Language -- \href{https://en.wikipedia.org/wiki/Domain-specific_language}{DSL} for interpretting news, or news-like websites. The sysyem was designed as part of a group project for South Dakota School of Mines \& Technology's Compilers course.
 
 \subsection{What is DERP: Human Queries For a Digital World}\label{sec:whatisDERP}
-Time is something we are regularly lacking and it would be nice to expedite the intake of online news while doing other things such as preparing and eating breakfast, taking a shower, getting dressed, or driving to work. We should be able to say to our phone, "What's going on in the world today?" and get a response containing relevant information that we care about; not just "I'm sorry, I don't understand 'What's going on in the world today'". If we want news on a specific topic, such as Tesla, it shoudl be as easy as saying, "What's in the news about Tesla?". \\ \\
-The formats of news intake are largely unchanged in recent years; sure, the internet provides a way for news to be shared, but we still have to hunt down the stories we want, whether we get it through a radio or television broadcast, an online or magazine article, or a newspaper. These broadcasts are rigid and we have no control over what news we hear and there are frequently topics that don't concern us. Articles and newspapers are the same way but we are able to skip what we don't like. The issue with newspapers is we are limited to what the editor decided to include. The issue with articles is that it's down to us to track down relevant stories. A common way to track down interesting articles is an aggregation site such as \href{https://www.reddit.com}{reddit}, \href{https://steemit.com/}{steemit}, \href{https://band.us/home}{band}, and \href{https://voat.co/}{voat} to name a \href{https://www.reddit.com/r/RedditAlternatives/comments/8585ox/list_of_active_reddit_alternatives/}{few}.
+Time is something we are regularly lacking and it would be nice to expedite the intake of online news while doing other things such as prepparing and eating breakfast, taking a shower, getting prepared, or driving to work. We should be able to tell our phone, "What's going on in the world today?" and be able to parse through available news stories. If we want news on a specific topic such as Tesla we should be able to say, "What's in the news about Tesla?".
+
+In the current form of news intake we either get it through a radio or television broadcast, an article, or a newspaper. The broadcast is rigid and we have no control over what news we hear and there are frequently topics that don't concern us. Articles and newspapers are the same way but we are able to skip what we don't like. The issue with newspapers is we are limited to what the editor decided to include. The issue with articles is tracking down relevant articles. A common way to track down interesting articles is an aggregation site such as \href{https://www.reddit.com}{Reddit}, \href{https://steemit.com/}{steemit}, \href{https://band.us/home}{BAND}, and \href{https://voat.co/}{Voat} to name a \href{https://www.reddit.com/r/RedditAlternatives/comments/8585ox/list_of_active_reddit_alternatives/}{few}.
 
 \subsection{DERP Origins}
 In the fall of 2018 we were tasked with making a DSL for a class in compiler theory. We discussed many possible topics:
@@ -142,6 +143,9 @@ While some keywords are understood specially by the language, such as those pert
 \input{constraints_exec_model.tex}
 \input{savable_criteria_exec_model.tex}
 \input{composed_constraints_exec_model.tex}
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% DQL SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
