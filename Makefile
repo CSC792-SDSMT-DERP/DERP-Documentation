@@ -32,5 +32,10 @@ all: whitepaper.pdf
 whitepaper.pdf: whitepaper.tex
 		latexmk -pdf -pdflatex="pdflatex -interaction=nonstopmode" -use-make whitepaper.tex
 
+#need to run pdflatex twice to get refrences.
+#pdflatex -interaction-nonstopmode -use-make whitepaper.tex		
+#pdflatex -interaction-nonstopmode -use-make whitepaper.tex		
+
+
 clean:
 		latexmk -CA
