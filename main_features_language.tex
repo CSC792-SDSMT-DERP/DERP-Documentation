@@ -1,5 +1,6 @@
 \subsection{Main Features}
 \subsubsection{Composable}
+\label{subsub:Composable}
 DERP-QL is composable on several levels. First of all, selections are composed of several \textit{selection statements}.
 Selections always start with an \texttt{Add} statement. \texttt{Add} statements always supply at least one source to pull postings from. Additionally, they may restrict the postings to a set of criteria. While selections always start with an \texttt{Add} statement, the selection can be further altered by any number of \texttt{Add} or \texttt{Remove} statements. 
 
@@ -38,7 +39,7 @@ Stop
 \end{lstlisting}
 
 While reusing selections is handy, it is even more useful to reuse the same filter criteria across multiple sources.
-While selections must pull from at least one source with an \texttt{Add} statement, \textit{criteria} are purely logical constructs. \textit{Criteria} provide a means to compose search criteria without pulling posts from any individual source. The selection above can be rewritten in terms of criteria.
+While selections must pull from at least one source with an \texttt{Add} statement, \textit{criteria}\label{create:criteria} are purely logical constructs. \textit{Criteria} provide a means to compose search criteria without pulling posts from any individual source. The selection above can be rewritten in terms of criteria.
 
 \begin{lstlisting}
 Create new criteria
@@ -60,7 +61,7 @@ DERP-QL is meant to be used in an interactive manner either through a REPL (Read
 
 \texttt{Recall}, on the other hand, makes programming easier for voice users. \texttt{Recall} causes the interpreter to list out the statements which make up a given selection. This command is especially helpful in the selection and criteria creation environments when programming by voice. 
 
-\subsubsection{Extensible}
+\subsubsection{Extensible}\label{sssec:Extensible}
 Source modules may define their own grammars which are concatenated into the overall language. For example, the reddit source module defines the \texttt{subreddit} keyword. The subreddit keyword takes the next string and uses it to select a portion of reddit to use as a source.
 
 TODO: Expand
