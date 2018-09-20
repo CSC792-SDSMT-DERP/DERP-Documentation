@@ -1,6 +1,8 @@
 \documentclass{article}
+\usepackage[margin=1in]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{comment}
+\usepackage{listings}
 \usepackage{titlesec}       % Lines under Sections
 \titleformat{\section}
   {\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
@@ -146,6 +148,14 @@ While some keywords are understood specially by the language, such as those pert
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% DQL SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \section{\textbf{The DERP Query Language}}
+The DERP Query Language (DERP-QL) makes it easy to write complex queries for a variety of Internet sources. In DERP, queries are represented by \textit{selections}. Selections find postings from a particular set of sources that match a corresponding set of criteria. The following is an example of a DERP-QL selection.
+
+\begin{lstlisting}
+Add posts from subreddit "nba" or subreddit "basketball" on "Lakers"
+Remove posts with under 1000 upvotes
+Remove posts on "Lebron James"
+\end{lstlisting}
+
 \input{main_features_language.tex}
 \input{primitives_language.tex}
 \input{higher_order_types_language.tex}
