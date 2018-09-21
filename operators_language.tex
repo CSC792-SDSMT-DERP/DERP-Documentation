@@ -1,4 +1,4 @@
-\subsection{DERP Operators}
+\subsection{Criteria Matching Operators}
 \subsubsection{String Operators}
 \label{sub:DerpOperators}
 \begin{itemize}
@@ -27,26 +27,35 @@
 \subsubsection{Misc Operators}
 \begin{itemize}
 \item matching - Criteria composition operator. The criteria corresponding to the provided name will be textually included into the current criteria or selection.
-\item from - Selection designation operator. The selection corresponding to the provided name will be textually included into the current selection.
+\item on - Substring search on "topical" fields as defined by a source module.
 \item and $|$ or - Combine the results from the statements on either side of the operator.
 \end{itemize}
 
-\subsubsection{Keywords}
+\subsection{Selection Matching Operators}
+\begin{itemize}
+    \item from - Source selection operator/ Selection composition operator. Pulls posts from a registered source or a previously saved selection. 
+    \item All criteria matching operators.
+\end{itemize}
+
+\subsection{Keywords}
+
+\subsubsection{Main Mode}
 \begin{itemize}
 \item exit - Exits the program, and may only be used in the mode selection mode.
-\item stop - end mode keyword. Ends selection or criteria creation mode and clears the active state.
-\item clear - reset mode state keyword. Without leaving the current creation mode, clears the active state.
-\item recall 
-    \begin{itemize}
-    \item (in create mode) read back the current state. Will read back all statements that have been entered.
-    \item (in mode selection) read back specified selection or criteria as if it were the active interpreter state.
-    \end{itemize}
-\item save as - store the current selection or criteria with a specified name. A saved selection or criteria may be used in the creation of other selections and criteria.
-\item read
-    \begin{itemize}
-    \item (in create mode) execute the selection in its current state and present the results.
-    \item (in mode selection) execute the specified selection and present the results.
-    \end{itemize}
-\item add - add a (set of) statements that include or exclude results from a source to a selection or criteria.
-\item remove - add a (set of) statements that exclude results from one or more sources to a selection or criterias.
+\item clear - Deletes a specified selection or criteria.
+\item load/ unload - Loads a news source module or a knowledge module.
+\item recall - Read out the selection statements or criteria statements which make up a specified selection or criterion.
+\item read - Execute the specified selection and present the results.
+\item create - Creates a new selection or criterion. Enters the respective builder mode.
+\end{itemize}
+
+\subsubsection{Selection and Criteria Builder Mode}
+\begin{itemize}
+\item stop - End mode keyword. Ends selection or criteria creation mode and clears the active state.
+\item clear - Reset mode state keyword. Without leaving the current creation mode, clears the active state.
+\item recall - Read out the selection statements or criteria statements which make up the object that is currently being built.
+\item read - (selection builder only) Execute the selection currently being built and present the results.
+\item save as - Store the current selection or criteria with a specified name. A saved selection or criteria may be used in the creation of other selections and criteria.
+\item add - Select posts which match a set of criteria. \texttt{From} is disallowed in in add statements in the criteria builder mode.
+\item remove - Remove posts which match a set of criteria.
 \end{itemize}
