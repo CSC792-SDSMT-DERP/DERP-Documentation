@@ -1,29 +1,29 @@
 \subsection{Hierarchical Data}
 Data structure flow model: $$website \rightarrow boards (subreddits) \rightarrow posts$$\\
-DERP is a declaritive language, so the programmer is focused in the logic of the statements to perform queries, otherwise known as selections. This means that the heavy lifting is done by the interpretor that is running the REPL. The interpretor will allow a programmer (user) to use sources such as reddit ( if time allows we will add more sources such as cnn, fox, nbc, etc ). The interpretor itself will make sure that a statement is valid and conforms to the standars of the current mode and modules loaded for news sources.
+DERP is a declarative language, so the main focus of a programmer will be the logic of the statements to perform queries, otherwise known as selections. This means that the task of organizing queries and their results is performed by the interpreter executing the REPL. The REPL will accept statements to define sources, identify defined sources, and request information from said sources. The interpreter itself will verify that each statement is valid and conforms to the standards of the current mode before executing it, taking into account the set of modules loaded for news sources.
 
-It will then evaluate the statement and perform a search of the loaded news sources with the criteria specified. Following the search it will initally pull only enough information for the the user to identify the article's defining information such as its title, date published, and source it is from. The user than can specify follow up statements that may perform summaries, new queries, give details about each article, and so on.
+Upon execution of a statement, the interpreter may register new sources or perform a search of the loaded news sources with the criteria specified. When executing a query, it will retrieve only enough information for the the user to identify an article's defining information. The defining information of articles will be tags such as its title, date published, and source. Statements following a query may perform summaries of the query results, start new queries, give details about each article, or otherwise perform some operation on the retrieved data.
 
 
 \subsubsection{Modes}
-The interpretor will have 3 modes that depend on the keywords used in the statement. These modes are the main mode, selection mode, and criteria mode.
+The REPL will have three modes of evaluation; the mode used to interpret a given statement will be dependent upon the language keywords provided in the statement. These modes are the main mode, selection mode, and criteria mode.
 
 \paragraph{Main Mode}
 
-The DERP interpretor will start in the main mode, also known as the top level mode. This mode allows the user to clear and read statements, as well as enter other modes. The other modes that can be entered are the selection and criteria creation modes. In the main mode the user would need to specify create new criteria or create new selection to enter these modes. To exit the interpretor the user would specify exit in this mode in order to quit out of the interpretor.
+The DERP interpreter will start in the main mode, also known as the top-level mode. This mode allows users to clear and read statements, as well as enter other modes. From this state, it is valid to switch the interpreter to either the selection more or the criteria creation mode. In this mode, language keywords which end a program should indicate that the REPL is to exit.
 
 \paragraph{Selection Mode}
 
-The selection mode would be able to add modules and add and remove queries in the statements, and also be able to save and read the query so far. To exit the mode, the user would specify stop, a keyword, to quit composing selections and enter the main mode again. Examples of using this mode are found in \autoref{subsub:Composable}. 
+The selection mode will be used to add modules, add and remove information from the current query, and save or read the query so far. In this mode, language keywords which end a program should indicate that the REPL is to return to the top-level mode. Examples of using this mode are found in \autoref{subsub:Composable}. 
 
 \paragraph{Criteria Mode}
 
-The criteria mode allows for the user to create logical statements that use the add, remove, and save statements. To exit the mode, the user would specify stop, a keyword, to quit composing logical statements and enter the main mode again. Details can be found in \autoref{subsub:Composable}.
+The criteria mode allows will be used to create logical statements that use the 'add', 'remove', and 'save' keywords. In this mode, language keywords which end a program should indicate that the REPL is to return to the top-level mode. Details can be found in \autoref{subsub:Composable}.
 
 
 \subsubsection{Modules}
 
-The interpretor will also allow for modules to be loaded during run time. These modules allow for the user to specify news sources with the news module and searchable criterial with the knowledge module. Examples of module use can be found in \autoref{sssec:Extensible}
+The interpreter will also allow for language modules to be loaded during run-time. These modules will add language keywords which allow users to use new kinds of news sources or query criteria. Examples of modules can be found in \autoref{sssec:Extensible}
 
 \paragraph{News Module }
 
