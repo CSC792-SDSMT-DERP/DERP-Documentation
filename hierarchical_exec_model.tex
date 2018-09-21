@@ -1,5 +1,8 @@
-\subsection{Hierachical Data (website $\rightarrow$ boards (subreddits) $\rightarrow$ posts}
-DERP is a declaritive language, so the programmer is focused in the logic of the statements to perform queries, otherwise known as selections. This means that the heavy lifting is done by the interpretor that is running the REPL. The interpretor will allow a programmer (user) to use sources such as reddit ( if time allows we will add more sources such as cnn, fox, nbc, etc ). The interpretor itself will make sure that a statement is valid and conforms to the standars of the current mode and modules loaded for news sources. It then will evaluate the statement and perform a search of the loaded news sources with the criteria specified. Next it will initally pull only enough information for the the user to identify the article's defining information such as its title, date published, and source it is from. The user than can specify follow up statements that may perform summaries, new queries, give details about each article, and so on. \\
+\subsection{Hierarchical Data}
+Data structure flow model: $$website \rightarrow boards (subreddits) \rightarrow posts$$\\
+DERP is a declaritive language, so the programmer is focused in the logic of the statements to perform queries, otherwise known as selections. This means that the heavy lifting is done by the interpretor that is running the REPL. The interpretor will allow a programmer (user) to use sources such as reddit ( if time allows we will add more sources such as cnn, fox, nbc, etc ). The interpretor itself will make sure that a statement is valid and conforms to the standars of the current mode and modules loaded for news sources.
+
+It will then evaluate the statement and perform a search of the loaded news sources with the criteria specified. Following the search it will initally pull only enough information for the the user to identify the article's defining information such as its title, date published, and source it is from. The user than can specify follow up statements that may perform summaries, new queries, give details about each article, and so on.
 
 
 \subsubsection{Modes}
