@@ -1,6 +1,2 @@
-To accomplish the goals of DERP, the language itself will be required to handle a lot of the nuances of the data it is used to collect in addition to allowing users to focus on creating the content that goes into the queries. Users should need to worry less about memory and more about the actual logic of the task at hand. The execution model of DERP will take all of these points into account. 
-
-
-
-\subsection{Interactive}
-The execution of statements within the DERP language will be done through a Read-Eval-Print-Loop (REPL). This REPL will evaluate language statements sequentially from its  input stream, which can be any valid source of text. For the initial prototype, the DERP REPL will provide a text interface similar to the interactive environments of Python and Bash. If time permits, we will implement a second interface layer to accept speech as the input - Such an interpreter would be similar to the REPL, but we will refer to it as the Hear-Eval-Speak-Loop (HESL).  
+The DERP query language provides users the ability to select the content they want while handling the nuances of arbitrary Internet data. In order to make this language as simple as possible in the face of these goals, the DERP execution model inherits a fair amount of complexity.
+  

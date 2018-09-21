@@ -1,34 +1,40 @@
-\subsection{Hierarchical Data}
-Data structure flow model: $$website \rightarrow boards (subreddits) \rightarrow posts$$\\
-DERP is a declarative language, so the main focus of a programmer will be the logic of the statements to perform queries, otherwise known as selections. This means that the task of organizing queries and their results is performed by the interpreter executing the REPL. The REPL will accept statements to define sources, identify defined sources, and request information from said sources. The interpreter itself will verify that each statement is valid and conforms to the standards of the current mode before executing it, taking into account the set of modules loaded for news sources.
+\subsection{Architecture}
 
-Upon execution of a statement, the interpreter may register new sources or perform a search of the loaded news sources with the criteria specified. When executing a query, it will retrieve only enough information for the the user to identify an article's defining information. The defining information of articles will be tags such as its title, date published, and source. Statements following a query may perform summaries of the query results, start new queries, give details about each article, or otherwise perform some operation on the retrieved data.
+\subsubsection{Interactive}
+The execution of statements within the DERP query language will be done through a Read-Eval-Print-Loop (REPL). This REPL will evaluate language statements sequentially from its  input stream, which can be any valid source of text. For the initial prototype, the DERP REPL will provide a text interface similar to the interactive environments of Python and Bash. If time permits, we will implement a second interface layer to accept speech as the input - Such an interpreter would be similar to the REPL, but we will refer to it as the Hear-Eval-Speak-Loop (HESL).
 
+The DERP query language is a declarative language, so the main focus of a programmer will be the logic of the statements to perform queries, otherwise known as selections. This means that the task of organizing queries and their results is performed by the interpreter executing the REPL. The REPL will accept statements which define sources and search criteria, as well as statements which execute the resulting queries. The interpreter itself will verify that each statement is valid and conforms to the standards of the current mode before executing it, taking into account the set of modules loaded for news sources.
+
+Upon execution of a statement, the interpreter may be expected to change the registered news sources, change the registered knowledge modules (see below), save or delete some bit of search criteria, or execute a query.
+
+When executing a query, the interpreter will retrieve only enough information for the the user to identify an article's defining information. The defining information of articles will be tags such as its title, date published, and source. Statements following the execution of a query may perform summaries of the query results, start new queries, give details about each article, or otherwise perform some operation on the retrieved data.
 
 \subsubsection{Modes}
 The REPL will have three modes of evaluation; the mode used to interpret a given statement will be dependent upon the language keywords provided in the statement. These modes are the main mode, selection mode, and criteria mode.
 
 \paragraph{Main Mode}
 
-The DERP interpreter will start in the main mode, also known as the top-level mode. This mode allows users to clear and read statements, as well as enter other modes. From this state, it is valid to switch the interpreter to either the selection more or the criteria creation mode. In this mode, language keywords which end a program should indicate that the REPL is to exit.
+The DERP interpreter will start in the main mode, also known as the top-level mode. This mode allows users to change the registered modules, as well as execute and delete saved queries (selections), as well as enter other modes. From this state, it is valid to switch the interpreter to either the selection more or the criteria creation mode. In this mode, language keywords which end a program should indicate that the REPL is to exit.
 
-\paragraph{Selection Mode}
+\paragraph{Selection Builder Mode}
 
-The selection mode will be used to add modules, add and remove information from the current query, and save or read the query so far. In this mode, language keywords which end a program should indicate that the REPL is to return to the top-level mode. Examples of using this mode are found in \autoref{subsub:Composable}. 
+The selection mode will be used to build full-fledged queries. Notably, selections must select some data from a loaded news source in order to produce a set of postings. In this mode, language keywords which end a program should indicate that the REPL is to return to the top-level mode. Examples of using this mode are found in \autoref{subsub:Composable}. 
 
-\paragraph{Criteria Mode}
+\paragraph{Criteria Builder Mode}
 
-The criteria mode allows will be used to create logical statements that use the 'add', 'remove', and 'save' keywords. In this mode, language keywords which end a program should indicate that the REPL is to return to the top-level mode. Details can be found in \autoref{subsub:Composable}.
+While selections must reference a loaded news source in order to produce a set of postings, criteria do not. Criteria contain saved bits of logical statements which may be reused in other criteria or in selections. In this mode, language keywords which end a program should indicate that the REPL is to return to the top-level mode. Details can be found in \autoref{subsub:Composable}.
 
 
 \subsubsection{Modules}
 
-The interpreter will also allow for language modules to be loaded during run-time. These modules will add language keywords which allow users to use new kinds of news sources or query criteria. Examples of modules can be found in \autoref{sssec:Extensible}
+The interpreter will also allow for language modules to be loaded during run-time. These modules will add language keywords which allow users to use new kinds of news sources or query criteria. Modules are not loaded by default. Rather users must choose to activate them within the query language. Examples of modules can be found in \autoref{sssec:Extensible}
 
-\paragraph{News Module }
+\paragraph{News Source Module }
 
-The news source is going to a be a modular component of the interpretor that can be defined by users. This will be a module in python that will define how the interpretor will interface with the source, what are the keywords associated with it, filters and search criteria will also be defined. For example reddit has a Python api that can be interfaced with and will have kewords that get defined such as subreddit and posts. It will also define what is considered a criteria, what a filter can exclude and so on. For simplicity, Reddit will be implemented initally and others added if time permits. When this becomes a HESL, the modules will be built into the interpreter and periodic updates will happen to allow for more sources of news to be suppported.\\
+Each news source is going to a be a modular component of the interpreter that can be selected by users. Each news source module will be a package in python that will define how the interpreter will interface with the source, what the keywords are associated with it, the fields contained on each post, and the sorting options allowed. For example, the reddit news source module uses the Reddit Python API and provides the "subreddit" and "posts" keywords. It also defines the name and typing of each searchable  field for each post. 
+
+For simplicity, the Reddit news source will be implemented initially and others added if time permits. When this becomes a HESL, the modules will be built into the interpreter and periodic updates will be pushed out to support more sources of news.\\
 
 
 \paragraph{Knowledge Module}
-The knowledge modules are used when the user wants to search through articles that were previously fetched using selection statements with news modules. This module would define how articles a are searched through and filtered locally. It would get the contents of the article at this point and filter tham further by the searchable criteria that the user stated.
+Knowledge modules provide more searchable fields for postings on demand. For example, a knowledge module may wrap a prepackaged sentiment analysis engine in order to provide the numeric field "sentiment" to query against. 
