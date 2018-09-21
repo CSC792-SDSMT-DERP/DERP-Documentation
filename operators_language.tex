@@ -1,4 +1,4 @@
-\subsection{Derp Operators}
+\subsection{DERP Operators}
 \subsubsection{String Operators}
 \label{sub:DerpOperators}
 \begin{itemize}
@@ -6,7 +6,7 @@
 \item like - String comparison fuzzy equality operator. Includes results where the specified field is an approximate match for the provided string.
 \item in the - Sub-String comparison equality operator. Includes results where a sub-string of the specified field is an exact match for the provided string.
 \end{itemize}
-\subsubsection{Date Operators}
+\subsubsection{Datetime Operators}
 \begin{itemize}
 \item Date on - Date comparison equality operator. Includes results where the specified field is exactly the same date as the provided date.
 \item date after - Date comparison greater-than operator. Includes results where the specified field is strictly after the provided date.
@@ -14,8 +14,8 @@
 \end{itemize}
 \subsubsection{Boolean Operators}
 \begin{itemize}
-\item which are $|$ are - Boolean comparison equality operator. Includes results where the specified field contains the boolean value of 'true'.
-\item which are not $|$ are not - Boolean comparison non-equality operator. Includes results where the specified field contains the boolean value of 'false'.
+\item which are $|$ are - Boolean comparison equality operator. Includes results where the specified field contains the boolean value of `true'.
+\item which are not $|$ are not - Boolean comparison non-equality operator. Includes results where the specified field contains the boolean value of `false'.
 \end{itemize}
 \subsubsection{Numeric Operators}
 \begin{itemize}
@@ -36,9 +36,17 @@
 \item exit - Exits the program, and may only be used in the mode selection mode.
 \item stop - end mode keyword. Ends selection or criteria creation mode and clears the active state.
 \item clear - reset mode state keyword. Without leaving the current creation mode, clears the active state.
-\item recall - (in create mode) read back the current state. Will read back all statements that have been entered.\\(in mode selection) read back specified selection or criteria as if it were the active interpreter state.
+\item recall 
+    \begin{itemize}
+    \item (in create mode) read back the current state. Will read back all statements that have been entered.
+    \item (in mode selection) read back specified selection or criteria as if it were the active interpreter state.
+    \end{itemize}
 \item save as - store the current selection or criteria with a specified name. A saved selection or criteria may be used in the creation of other selections and criteria.
-\item read - (in create mode) execute the selection in its current state and present the results.\\(in mode selection) execute the specified selection and present the results.
+\item read
+    \begin{itemize}
+    \item (in create mode) execute the selection in its current state and present the results.
+    \item (in mode selection) execute the specified selection and present the results.
+    \end{itemize}
 \item add - add a (set of) statements that include or exclude results from a source to a selection or criteria.
-\item remove - add a (set of) statements that exclude results from one or more sources to a selection or criteria.s
+\item remove - add a (set of) statements that exclude results from one or more sources to a selection or criterias.
 \end{itemize}

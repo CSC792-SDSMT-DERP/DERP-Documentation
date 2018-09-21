@@ -7,7 +7,7 @@ The interpretor will have 3 modes that depend on the keywords used in the statem
 
 \paragraph{Main Mode}
 
-The DERP interpretor will start in the main mode, also known as the top level mode. This mode allows the user to clear and read statements, as well as enter other modes. The other modes that can be entered are the selection and criteria creation modes. In the main mode the user would need to specify create new criteria or create new selection to enter these modes. To exit the interpretor the user would specify exit in this mode in order to quit out of the interpretor. \\
+The DERP interpretor will start in the main mode, also known as the top level mode. This mode allows the user to clear and read statements, as well as enter other modes. The other modes that can be entered are the selection and criteria creation modes. In the main mode the user would need to specify create new criteria or create new selection to enter these modes. To exit the interpretor the user would specify exit in this mode in order to quit out of the interpretor.
 
 \paragraph{Selection Mode}
 
@@ -15,14 +15,14 @@ The selection mode would be able to add modules and add and remove queries in th
 
 \paragraph{Criteria Mode}
 
-The criteria mode allows for the user to create just logical statements that use the add, remove, and save statements. To exit the mode, the user would specify stop, a keyword, to quit composing logical statements and enter the main mode again. Details can be found in \autoref{subsub:Composable}.\\
+The criteria mode allows for the user to create logical statements that use the add, remove, and save statements. To exit the mode, the user would specify stop, a keyword, to quit composing logical statements and enter the main mode again. Details can be found in \autoref{subsub:Composable}.
 
 
 \subsubsection{Modules}
 
 The interpretor will also allow for modules to be loaded during run time. These modules allow for the user to specify news sources with the news module and searchable criterial with the knowledge module. Examples of module use can be found in \autoref{sssec:Extensible}
 
-\paragraph{ News Module }
+\paragraph{News Module }
 
 The news source is going to a be a modular component of the interpretor that can be defined by users. This will be a module in python that will define how the interpretor will interface with the source, what are the keywords associated with it, filters and search criteria will also be defined. For example reddit has a Python api that can be interfaced with and will have kewords that get defined such as subreddit and posts. It will also define what is considered a criteria, what a filter can exclude and so on. For simplicity, Reddit will be implemented initally and others added if time permits. When this becomes a HESL, the modules will be built into the interpreter and periodic updates will happen to allow for more sources of news to be suppported.\\
 

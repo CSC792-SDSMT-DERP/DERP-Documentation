@@ -76,7 +76,7 @@ Stelter, Andrew
 Dictation Evaluation Reddit Parser -- \href{https://gitlab.mcs.sdsmt.edu/7184015/DERP}{DERP}, is designed to be a Domain Specific Language -- \href{https://en.wikipedia.org/wiki/Domain-specific_language}{DSL} for interpreting news, or news-like websites. The system was designed as part of a group project for South Dakota School of Mines \& Technology's Compilers course.
 
 \subsection{What is DERP: Human Queries For a Digital World}\label{sec:whatisDERP}
-Time is something we are regularly lacking and it would be nice to expedite the intake of online news while doing other things such as preparing and eating breakfast, taking a shower, getting dressed, or driving to work. We should be able to say to our phone, "What's going on in the world today?" and get a response containing relevant information that we care about; not just "I'm sorry, I don't understand 'What's going on in the world today'". If we want news on a specific topic, such as Tesla, it should be as easy as saying, "What's in the news about Tesla?". \\ \\
+Time is something we are regularly lacking and it would be nice to expedite the intake of online news while doing other things such as preparing and eating breakfast, taking a shower, getting dressed, or driving to work. We should be able to say to our phone, ``What's going on in the world today?'' and get a response containing relevant information that we care about; not just ``I'm sorry, I don't understand, `What's going on in the world today' ''. If we want news on a specific topic, such as Tesla, it should be as easy as saying, ``What's in the news about Tesla?''. \\ \\
 The formats of news intake are largely unchanged in recent years; sure, the internet provides a way for news to be shared, but we still have to hunt down the stories we want, whether we get it through a radio or television broadcast, an online or magazine article, or a newspaper. These broadcasts are rigid and we have no control over what news we hear and there are frequently topics that don't concern us. Articles and newspapers are the same way but we are able to skip what we don't like. The issue with newspapers is we are limited to what the editor decided to include. The issue with articles is that it's down to us to track down relevant stories. A common way to track down interesting articles is an aggregation site such as \href{https://www.reddit.com}{reddit}, \href{https://steemit.com/}{steemit}, \href{https://band.us/home}{band}, and \href{https://voat.co/}{voat} to name a \href{https://www.reddit.com/r/RedditAlternatives/comments/8585ox/list_of_active_reddit_alternatives/}{few}.
 
 \subsection{DERP Origins}
@@ -156,6 +156,7 @@ While some keywords are understood specially by the language, such as those pert
 \section{\textbf{The DERP Query Language}}
 The DERP Query Language (DERP-QL) makes it easy to write complex queries for a variety of Internet sources. In DERP, queries are represented by \textit{selections}. Selections find postings from a particular set of sources that match a corresponding set of criteria. The following is an example of a DERP-QL selection.
 
+% Quotes in listings looks terrible
 \begin{lstlisting}
 Add posts from subreddit "nba" or subreddit "basketball" on "Lakers"
 Remove posts with under 1000 upvotes
