@@ -74,15 +74,15 @@ Stelter, Andrew
 \section{\textbf{Introduction to DERP}}
 
 \setcounter{page}{1} % Set the page counter to 3
-Dictation Evaluation Reddit Parser -- \href{https://gitlab.mcs.sdsmt.edu/7184015/DERP}{DERP}, is designed to be a Domain Specific Language -- \href{https://en.wikipedia.org/wiki/Domain-specific_language}{DSL} for interpreting news, or news-like websites. The system was designed as part of a group project for South Dakota School of Mines \& Technology's Compilers course.
+\href{https://gitlab.mcs.sdsmt.edu/7184015/DERP}{DERP}, the \textbf{D}ictation \textbf{E}valuation \textbf{R}eddit \textbf{P}arser, is a \href{https://en.wikipedia.org/wiki/Domain-specific_language}{DSL}(Domain Specific Language) for finding news information from multiple web sources simultaneously. The system was designed as part of a group project for South Dakota School of Mines \& Technology's Compilers course.
 
 \subsection{What is DERP: Human Queries For a Digital World}\label{sec:whatisDERP}
-Time is something we are regularly lacking and it would be nice to expedite the intake of online news while doing other things such as preparing and eating breakfast, taking a shower, getting dressed, or driving to work. We should be able to say to our phone, ``What's going on in the world today?'' and get a response containing relevant information that we care about; not just ``I'm sorry, I don't understand, `What's going on in the world today' ''. If we want news on a specific topic, such as Tesla, it should be as easy as saying, ``What's in the news about Tesla?''. 
+Time is a resource that people regularly find themselves lacking, and many would agree it would be convenient to have an easy way to consume online news while doing daily tasks -- preparing and eating breakfast, taking a shower, getting dressed, or driving to work. We should be able to say to a phone, ``What's going on in the world today?'' and get a response containing relevant information that we care about; not just ``I'm sorry, I don't understand, `What's going on in the world today' ''. If we want news on a specific topic, such as Tesla, getting that information should be as easy as saying, ``What's in the news about Tesla?''. 
 
-The formats of news intake are largely unchanged in recent years; sure, the internet provides a way for news to be shared, but we still have to hunt down the stories we want, whether we get it through a radio or television broadcast, an online or magazine article, or a newspaper. These broadcasts are rigid and we have no control over what news we hear and there are frequently topics that don't concern us. Articles and newspapers are the same way but we are able to skip what we don't like. The issue with newspapers is we are limited to what the editor decided to include. The issue with articles is that tracking down relevant stories is left as an exercise for us. A common way to track down interesting articles is an aggregation site such as \href{https://www.reddit.com}{reddit}, \href{https://steemit.com/}{steemit}, \href{https://band.us/home}{band}, and \href{https://voat.co/}{voat} to name a \href{https://www.reddit.com/r/RedditAlternatives/comments/8585ox/list_of_active_reddit_alternatives/}{few}.
+The formats used to present news are largely unchanged in recent years; sure, the internet provides a way for news to be shared, but we still have to hunt down the stories we want, whether we get them through a radio or television broadcast, an individual online or print article, or a newspaper. These formats are often quite rigid, giving us little control over what news we get, or so full of information that doesn't concern us that it can be difficult to know where to begin. One common solution used as a middle ground to these problems is aggregation sites such as \href{https://www.reddit.com}{Reddit}, \href{https://steemit.com/}{steemit}, \href{https://band.us/home}{band}, and \href{https://voat.co/}{voat} to name a \href{https://www.reddit.com/r/RedditAlternatives/comments/8585ox/list_of_active_reddit_alternatives/}{few}. While these sites in this category go a long way toward solving the problems presented, they often fall into the same traps: Lacking information users want or presenting so much information that it's difficult to wade through it all.
 
 \subsection{DERP Origins}
-In the fall of 2018 we were tasked with making a DSL for a class in compiler theory. We discussed many possible topics:
+In the fall of 2018 we were tasked with making a DSL for a class in compiler theory. A number of applications discussed by our team follow:
 \begin{itemize}
     \item{Describe Constraints  to Generate something}
     \begin{itemize}
@@ -102,52 +102,40 @@ In the fall of 2018 we were tasked with making a DSL for a class in compiler the
     \end{itemize}
 \end{itemize}
 
-We decided against a Constrain/Generate model because the ideas we came up with all required labeled data which we did not have access to, and we were not sure we could find or make sufficient data in a timely manner.
+We decided against a Constrain/Generate model because the ideas we came up with all required labeled data which we did not have access to, and we were not sure that we would be able to find or make sufficient data in a timely manner.
 
-Creating a language to help perform a task seemed like a good idea at first, but we realized being reliant on some external item (a robot, in the case of Dr. Hinker's proposal) could hinder progress unnecessarily. We were also wary of working with a new, possibly unfinished, project and didn't know we'd be walking into a well-documented, fully-defined product or a hack. Going down the route of something purely software, as we would have with our image processing concept, was a more viable option for this category of project, but we declined to pursue that option.
+Creating a language to help perform a task seemed like a good idea at first, but we realized being reliant on some external item (a robot, in the case of Dr. Hinker's proposal) could hinder progress unnecessarily. We were also wary of working with a new, possibly unfinished, project and didn't know if we'd be walking into a well-documented, fully-defined product or a hack. Going down the route of something purely software, as we would have with our image processing concept, was a more viable option for this category of project, but we ultimately decided against it.
 
 \begin{comment}
 Do we want to talk about why we didn't go with the image processing project?
 \end{comment}
 
-Lastly, we discussed configuration-style tasks. The two proposals were for a News Reader and for a SQL Helper. The core concept of the News Reader is that a user should be able to create custom queries that will obtain only the news that they are interested in. The idea behind the SQL Helper was to make SQL more accessible for the general public to use in common use cases; for example, a secretary with no prior SQL knowledge should be able to use it to get information from the company database to generate a report. We deemed the headache of building such a system while also making it robust enough to translate human queries into SQL to be too much work for the amount of time given for the project; so, we settled on the News Reader.
+Lastly, we discussed configuration-style tasks. The two proposals from team members were for a News Reader and for a SQL Helper. The core concept of the News Reader was that a user should be able to create custom queries that will obtain only the news that they are interested in, regardless of where the information was originally from. The idea behind the SQL Helper was to make SQL more accessible for the general public to use in everyday business situations; for example, a secretary with no prior SQL knowledge should be able to use it to get information from the company database to generate a report. We deemed the headache of building such a system while also making it robust enough to translate human queries into SQL to be too much work for the amount of time given for the project; so, we settled on the News Reader.
 
-Every project needs a name; having selected our project this was the most important task left to us. We settled on \textbf{D}ictation \textbf{E}valuation \textbf{R}eddit \textbf{P}arser because, if we have enough time, we'd like it to take spoken words as input to evaluate. The Reddit bit was added because our minimum viable product will be built around the popular forum site of the same name.
+Every project needs a name; having selected our project, this was the most important task left to us. We settled on \textbf{D}ictation \textbf{E}valuation \textbf{R}eddit \textbf{P}arser because, if we have enough time, we'd like it to take spoken words as input to evaluate. The project will focus on interfacing with Reddit for a minimum viable product; however, the language is designed with other sources in mind.
 
 
 \subsection{Why DERP}
-DERP allows a developer to create an interface between a person and an information feed site such as \href{https://www.reddit.com}{Reddit}, \href{https://steemit.com/}{steemit}, \href{https://band.us/home}{BAND}, and \href{https://voat.co/}{Voat}, as described in \hyperref[sec:whatisDERP]{What is DERP} section. This interface allows for a programmer to develop an application that cleanly links an end-user to the feed site(s) of their choice, without the user even being aware that they are using DERP. While developers who want to access new news sites will still need to know how to get information from the source site of their choosing, DERP is designed to do the heavy lifting of finding and sorting relevant data, allowing less technically-minded users to build their own information filters from existing sources. It is a consistent starting point for developers so they do not need to worry about the details of determining what should be searched and how results should be organized. Lastly, don't spend time building a solution when one's available for free.
+DERP allows a developer to create an interface between a person and information feed sites such as \href{https://www.reddit.com}{Reddit}, \href{https://steemit.com/}{steemit}, \href{https://band.us/home}{BAND}, and \href{https://voat.co/}{Voat}, as described in the \hyperref[sec:whatisDERP]{What is DERP} section. This interface allows for a programmer to develop an application that cleanly links an end-user to the feed site(s) of their choice, without the user even being aware that they are using DERP. While developers who want to access new news sites will still need to know how to get information from the source site of their choosing, DERP is designed to do the heavy lifting of finding and sorting relevant data, allowing less technically-minded users to build their own information filters from existing sources. It is a free solution which can provide a consistent starting point for developers so that they do not need to worry about the details of determining what should be searched and how results should be organized.
 
 
 \newpage
 \section{DERP Design Goals}
 \subsection{Consolidated Information}
-The DERP project provides an intuitive way to multiplex multiple news sources into a personalized stream of data. Using DERP, a user can specify as many different sources as they want to (provided language plugins are available), and then all of those sources are accessed through the same set of language keywords, regardless of if the source is a subreddit, an arbitrary news website, or just a file on the user's device. Furthermore, DERP facilitates naming groups of sources and queries to create query macros,
-\begin{comment}
-@ADS Did we actually decide on if we want savable sets of instructions other than in the form of a DERP program? (Can a program create another program?)
-\end{comment}
-allowing users to further personalize what they get out of DERP.
+The DERP project provides an intuitive way to multiplex groups of news sources into a personalized stream of data. Using DERP, a user can specify as many different sources as they want to (provided language plugins are available), and then all of those sources are accessed through the same set of language keywords, regardless of if the source is a subreddit, an arbitrary news website, or even just a file on the user's device. Furthermore, DERP facilitates naming groups of sources and queries to create criteria and new sources composed of other sources that can be used together, allowing users to further personalize what they get out of DERP.
 
-Online news sources regularly expose the same categories of information - date, author, title - DERP acts as an interface for all different article types, allowing users to work only with this high-level information about the articles they are finding. Hiding the details of what exactly is required to find an article that matches a specific criterion allows users to focus more on what they want to read, and less on how they obtain that information.
+Online news sources regularly expose the same categories of information - date, author, title, etc. DERP acts as an interface for all different article types, allowing users to work only with this high-level information about the articles they are finding. Hiding the details of what exactly is required to find an article that matches a specific criterion allows users to focus more on what they want to read, and less on how they obtain that information.
 
-\subsection{Easy to Use Natural English Interface}
+\subsection{Easy-to-Use Natural English Interface}
 The second goal of DERP is to design a language that would not feel awkward if spoken. All of the DERP keywords and syntax follow simple but natural English speech patterns. This allows for easy adaptation of DERP into speech-recognition tools such as Google Assistant and Amazon Alexa. Using the natural form of the language, users with one of these devices could speak their program to the interpreter and receive results immediately.
 
-In addition to being easy to command DERP through natural language, DERP provides output that also feels natural.
-\begin{comment}
-@ADS - Is this something we're actually doing? We've kind of had it implied
-in discussions, but never explicitly talked about it
-\end{comment}
+In a similar vein, DERP provides output that also feels natural.
 DERP has a set of phrases available to it for reporting errors or results from user queries. The main output from DERP, articles the user has requested, are outputted as full text so that, should devices reading them use a text-to-speech system, they will sound as natural as possible.
 
-\subsection{Search More, Search Faster}
-By amalgamating news sources into a personalized feed, DERP allows users to find the information they want with fewer operations. Rather than check each of their favorite subreddits, news sites, and RSS feeds, a user can simply load those sources into DERP and make a general query that applies to one or more of them. DERP will do the hard work of finding things the user might be interested in, which means the user will be able to spend more of their time actually consuming the information provided and deciding on new topics to get information about.
+\subsection{Search More, Faster}
+By merging news sources into a personalized feed, DERP allows users to find the information they want with fewer operations. Rather than check each of their favorite subreddits, news sites, and RSS feeds, a user can simply load those sources into DERP and make a general query that applies all of them at once. DERP will do the hard work of finding things the user might be interested in, which means the user will be able to spend more of their time actually consuming the information provided and deciding on new topics to get information about.
 
-Because it is an extensible language, DERP users are limited only by the language plugins they use. 
-\begin{comment}
-@ADS Is this also something we officially decided on? I felt that we were leaning toward it
-\end{comment}
-While some keywords are understood specially by the language, such as those pertaining to dates and times, any language plugin can provide additional fields and keywords, making the language flexible and powerful while keeping  complexity out of the core of the language.
+Because it is an extensible language, DERP's users are limited only by the language plugins they use. While some keywords are understood specially by the language, such as those pertaining to dates and times, any language plugin can provide additional fields and keywords, making the language flexible and powerful while keeping complexity out of it's core.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% EXEC MODEL SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%

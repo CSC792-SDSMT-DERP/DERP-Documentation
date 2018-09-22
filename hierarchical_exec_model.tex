@@ -1,40 +1,37 @@
 \subsection{Architecture}
 
 \subsubsection{Interactive}
-The execution of statements within the DERP query language will be done through a Read-Eval-Print-Loop (REPL). This REPL will evaluate language statements sequentially from its  input stream, which can be any valid source of text. For the initial prototype, the DERP REPL will provide a text interface similar to the interactive environments of Python and Bash. If time permits, we will implement a second interface layer to accept speech as the input - Such an interpreter would be similar to the REPL, but we will refer to it as the Hear-Eval-Speak-Loop (HESL).
+The execution of statements from the DERP query language will be done through a Read-Eval-Print-Loop (REPL). This REPL will evaluate language statements sequentially from its input stream, which can be any valid source of text. For the initial prototype, the DERP REPL will provide a text interface similar to the interactive environments of Python and Bash. If time permits, we will implement a second interface layer to accept speech as the input - Such an interpreter would be similar to the REPL, but we will refer to it as the Hear-Eval-Speak-Loop (HESL).
 
 The DERP query language is a declarative language, so the main focus of a programmer will be the logic of the statements to perform queries, otherwise known as selections. This means that the task of organizing queries and their results is performed by the interpreter executing the REPL. The REPL will accept statements which define sources and search criteria, as well as statements which execute the resulting queries. The interpreter itself will verify that each statement is valid and conforms to the standards of the current mode before executing it, taking into account the set of modules loaded for news sources.
 
-Upon execution of a statement, the interpreter may be expected to change the registered news sources, change the registered knowledge modules (see below), save or delete some bit of search criteria, or execute a query.
+Upon execution of a statement, the interpreter may be expected to change the set of registered news sources, change the registered knowledge modules (see below), save or delete part of a search criterion, or execute a query.
 
-When executing a query, the interpreter will retrieve only enough information for the the user to identify an article's defining information. The defining information of articles will be tags such as its title, date published, and source. Statements following the execution of a query may perform summaries of the query results, start new queries, give details about each article, or otherwise perform some operation on the retrieved data.
+When executing a query, the interpreter will retrieve only enough information to identify an article's defining information for the user. The defining information of articles will be stored in the form of tags; they will contain things like its title, date published, and location of origin. Statements following the execution of a query may perform summaries of the query results, start new queries, give details about each article, or otherwise perform some operation on the retrieved data.
 
 \subsubsection{Modes}
-The REPL will have three modes of evaluation; the mode used to interpret a given statement will be dependent upon the language keywords provided in the statement. These modes are the main mode, selection mode, and criteria mode.
+The REPL will have three modes of evaluation; the mode used to interpret a given statement will be dependent upon the language keywords provided in the statement. These modes are named Main Mode (or Top-Level Mode), Selection Mode, and Criteria Mode.
 
 \paragraph{Main Mode}
 
-The DERP interpreter will start in the main mode, also known as the top-level mode. This mode allows users to change the registered modules, as well as execute and delete saved queries (selections), as well as enter other modes. From this state, it is valid to switch the interpreter to either the selection more or the criteria creation mode. In this mode, language keywords which end a program should indicate that the REPL is to exit.
+The DERP interpreter will always start in the main mode. This mode allows users to change the registered modules, execute and delete saved queries (selections), and as switch to other modes. From this state, it is valid to switch the interpreter to either the selection mode or the criteria creation mode. In this mode, language keywords which end a program should indicate that the REPL is to exit.
 
 \paragraph{Selection Builder Mode}
 
-The selection mode will be used to build full-fledged queries. Notably, selections must select some data from a loaded news source in order to produce a set of postings. In this mode, language keywords which end a program should indicate that the REPL is to return to the top-level mode. Examples of using this mode are found in \autoref{subsub:Composable}. 
+The selection mode will be used to build full queries that can be executed through a later statement. Notably, selections must select some data from a loaded news source in order to produce a set of results. In this mode, language keywords which end a program should indicate that the REPL is to return to the top-level mode. Examples of using this mode are found in \autoref{subsub:Composable}. 
 
 \paragraph{Criteria Builder Mode}
 
-While selections must reference a loaded news source in order to produce a set of postings, criteria do not. Criteria contain saved bits of logical statements which may be reused in other criteria or in selections. In this mode, language keywords which end a program should indicate that the REPL is to return to the top-level mode. Details can be found in \autoref{subsub:Composable}.
+This mode allows users create criteria that can be applied to sources as part of a query. While selections must reference a loaded news source, criteria do not have the same constraint. In this mode, language keywords which end a program should indicate that the REPL is to return to the top-level mode. Details can be found in \autoref{subsub:Composable}.
 
 
 \subsubsection{Modules}
 
-The interpreter will also allow for language modules to be loaded during run-time. These modules will add language keywords which allow users to use new kinds of news sources or query criteria. Modules are not loaded by default. Rather users must choose to activate them within the query language. Examples of modules can be found in \autoref{sssec:Extensible}
+The interpreter will also allow for language modules to be loaded during run-time. These modules will add language keywords which allow users to use new kinds of news sources or query criteria. Modules are not loaded by default; users must choose to activate them within a session of the REPL. Examples of modules can be found in \autoref{sssec:Extensible}
 
 \paragraph{News Source Module }
 
-Each news source is going to a be a modular component of the interpreter that can be selected by users. Each news source module will be a package in python that will define how the interpreter will interface with the source, what the keywords are associated with it, the fields contained on each post, and the sorting options allowed. For example, the reddit news source module uses the Reddit Python API and provides the "subreddit" and "posts" keywords. It also defines the name and typing of each searchable  field for each post. 
-
-For simplicity, the Reddit news source will be implemented initially and others added if time permits. When this becomes a HESL, the modules will be built into the interpreter and periodic updates will be pushed out to support more sources of news.\\
-
+Each news source will be a modular component of the interpreter that can be selected from. News source modules will be defined in a package which indicates how the interpreter will interface with the source, what the keywords are associated with it, what fields are contained on each post, and what sorting options are allowed for results from the source. For example, the Reddit news source module for the Python implementation of the DERP REPL uses the Reddit Python API and provides the "subreddit" and "posts" keywords. It also defines the name and data type of each searchable  field for each post. 
 
 \paragraph{Knowledge Module}
-Knowledge modules provide more searchable fields for postings on demand. For example, a knowledge module may wrap a prepackaged sentiment analysis engine in order to provide the numeric field "sentiment" to query against. 
+Knowledge modules provide more search-able fields for query results on demand. For example, a knowledge module may wrap a prepackaged sentiment analysis engine in order to provide the numeric field "sentiment" to query against. 
