@@ -1,0 +1,87 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{comment}
+\usepackage{listings}
+\usepackage{titlesec}       % Lines under Sections
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+
+\usepackage{etoolbox}       % Because titlesec removes section numbering -_-
+\makeatletter
+\patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
+\patchcmd{\ttlh@hang}{\noindent}{}{}{}
+\makeatother
+
+%\renewcommand\maketitle{}
+
+% Give Table of Contents Hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=blue
+}
+\pagenumbering{gobble}
+% \pagenumbering{roman} % set the numbering style to lowercase letter\autoref*{#1} 
+\newcommand*{\fullref}[1]{\hyperref[{#1}]{section \ref*{#1} \nameref*{#1} }}
+\title{\textbf{Dictation Evaluation Reddit Parser}}
+
+\author{
+Garcia, Benjamin \and
+Lembke, Logan \and 
+MacMillan, Kyle  \and 
+Smith, Christopher \and 
+Stelter, Andrew 
+}
+\date{September 21, 2018}
+
+
+%\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\begin{document}
+
+
+\addcontentsline{toc}{section}{Title}
+\maketitle %%TODO: maketitle doesn't seem to be working
+
+\newpage
+\tableofcontents
+% \addcontentsline{toc}{section}{Table of Contents}
+
+\pagenumbering{roman}   % Set TOC page numbering to lowercase roman numerals
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% INTRO SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=blue
+}
+\pagenumbering{arabic}  % Set content page numbering to arabic numerals
+\section{Refrence Guide}
+\input{syntax_notation.tex}
+\input{language_extension.tex}
+\input{lexical_conventions.tex}
+\input{language_modes.tex}
+\input{data_types.tex}
+\input{statements_expressions.tex}
+
+
+
+
+\section{Language Tutorial}
+
+
+\end{document}
