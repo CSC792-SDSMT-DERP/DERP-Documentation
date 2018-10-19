@@ -1,11 +1,11 @@
 # You want latexmk to *always* run, because make does not have all the info.
 # Also, include non-file targets in .PHONY so they are run regardless of any
 # file of the given name existing.
-.PHONY: refrence_manual.pdf all clean
+.PHONY: derp_refrence_manual.pdf all clean
 
 # The first rule in a Makefile is the one executed by default ("make"). It
 # should always be the "all" rule, so that "make" and "make all" are identical.
-all: refrence_manual.pdf
+all: derp_refrence_manual.pdf
 
 # CUSTOM BUILD RULES
 
@@ -29,10 +29,10 @@ all: refrence_manual.pdf
 # -interaction=nonstopmode keeps the pdflatex backend from stopping at a
 # missing file reference and interactively asking you for an alternative.
 
-refrence_manual.pdf: src/refrence_manual.tex
+derp_refrence_manual.pdf: src/refrence_manual.tex
 		cd src; \
 			latexmk -pdf -pdflatex="pdflatex -interaction=nonstopmode" -use-make refrence_manual.tex
-		mv src/refrence_manual.pdf .
+		mv src/refrence_manual.pdf ./derp_refrence_manual.pdf
 
 #need to run pdflatex twice to get refrences.
 #pdflatex -interaction-nonstopmode -use-make whitepaper.tex		
@@ -42,4 +42,4 @@ refrence_manual.pdf: src/refrence_manual.tex
 clean:
 		cd src; \
 			latexmk -CA
-		rm refrence_manual*
+		rm derp_refrence_manual*
