@@ -1,1 +1,22 @@
-\section{Language Extension}
+\section{A Note About Language Extension}
+\item Because one of the main features of DERP is that it supports loading and unloading
+of language extension modules, there are some guarantees we can make in this document 
+which will only hold true for the base language with no loaded modules.
+
+Modules are allowed to define additional parse rules for the following tokens of DERP:
+\begin{itemize}
+\item source
+\item field
+\item sortkey
+\end{itemize}
+Furthermore, modules are allowed to define any additional parse rules they would like, so 
+long as those parse rules are used within the additional definitions for the above tokens 
+and do not redefine other DERP parse rules. Fields and sources are defined further below in [section #]. 
+%%%     REFRENCE A LATER SECTION ABOVE      %%%%%%%%%%%
+For example, a source module for interfacing with a Reddit API module might define the following rules:
+\begin{center}
+    \emph{source} : \emph{subreddit string} \bf{|} \emph{reddit}
+    \emph{field} : \emph{title} \bf{|} \emph{upvotes} \bf{|} \emph{tags} \bf{|} \emph{nsfw}
+    \emph{nsfw} : \emph {nsfw} \bf{|} \emph{not safe for work}
+    \emph{sortkey} : \emph{popular}
+\end{center}
