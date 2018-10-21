@@ -1,33 +1,38 @@
 \section{Language Modes}
+
 The DERP language is defined in terms of different modes of operation. 
 Switching to a new mode is achieved through the use of certain expressions 
 which are specific to the current mode. When a mode is triggered, the 
 subset of the language that is valid may change. The next sections give 
 a brief description of each mode, as well as the statements used to switch between them.
 
+
 \subsection{Main Mode}
+
 As the name implies, this is the mode that a DERP interpreter should begin in. In this mode, 
 statements that change the loaded plugins, output the instructions for a saved query, read a 
 saved query, clear the currently saved result, or begin query/criteria creation are all valid. 
 See section [section #] for more details about Main Mode statements.
 %%%%%%REFRENCE A SECTION NUMBER%%%%%%%%%%%%
 
-Use a \ecode{create\_expression} with the selection keyword to switch from Main Mode to Selection Mode
+Use a \ecode{create\_expression} with the selection keyword to switch from Main Mode to Selection Mode\\
 \begin{center}
     \ecode{create\_expression} \code{: create article\bf{?} new\bf{?} selection}\\
 \end{center}
 
-Use a \ecode{create\_expression} with the criteria keyword to switch from Main Mode to Criteria Mode
+Use a \ecode{create\_expression} with the criteria keyword to switch from Main Mode to Criteria Mode\\
 \begin{center}
     \ecode{create\_expression} \code{: create article\bf{?} new\bf{?} criteria}\\
 \end{center}
 
-To end your DERP program or close the DERP interpreter use a \ecode{stop\_expression} in Main Mode
+To end your DERP program or close the DERP interpreter use a \ecode{stop\_expression} in Main Mode\\
 \begin{center}
     \ecode{stop\_expression} \code{: stop \bf{\textbar} exit}\\
 \end{center}
 
+
 \subsection{Selection Mode}
+
 Selection mode is used to create a new selection statement which can be executed at a later time from Main Mode. 
 While in Selection Mode, statements which build the query, read the query statements, save the query, or exit 
 Selection Mode are all valid. See section [section #] for more details about Selection Mode statements.
