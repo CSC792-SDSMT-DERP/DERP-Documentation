@@ -7,13 +7,13 @@
 \titleformat{\section}
   {\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
 
-\usepackage{etoolbox}       % Because titlesec removes section numbering -_-
+\usepackage{etoolbox}       % Because titlesec removes section numbering -\_-
 \makeatletter
 \patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
 \patchcmd{\ttlh@hang}{\noindent}{}{}{}
 \makeatother
 \newcommand{\code}{\texttt}
-\newcommand{\ecode}[1]{\emph{\code{#1}}}
+\newcommand{\ecode}[1]{\textit{\code{#1}}}
 %\renewcommand\maketitle{}
 
 % Give Table of Contents Hyperlinks
@@ -76,8 +76,8 @@ Stelter, Andrew
 \part{Language Tutorial}
 \section{Introduction}
 
-\input{getting_started.tex}
-\input{basic_usage.tex}
+\input{getting\_started.tex}
+\input{basic\_usage.tex}
 
 
 
@@ -87,12 +87,12 @@ This section describes the DERP language, as outlined in the DERP Language white
  of 2018. This reference defines all of the main constructs of the language and gives some examples 
  of their usages; it will not contain hard definitions of any of the specific language constructs 
  defined in plugins to the language; however, it may use some as examples.
-\input{syntax_notation.tex}
-\input{language_extension.tex}
-\input{lexical_conventions.tex}
-\input{language_modes.tex}
-\input{data_types.tex}
-\input{statements_expressions.tex}
+\input{syntax\_notation.tex}
+\input{language\_extension.tex}
+\input{lexical\_conventions.tex}
+\input{language\_modes.tex}
+\input{data\_types.tex}
+\input{statements\_expressions.tex}
 
 
 

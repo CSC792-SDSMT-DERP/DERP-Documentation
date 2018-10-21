@@ -12,19 +12,19 @@ saved query, clear the currently saved result, or begin query/criteria creation 
 See section [section #] for more details about Main Mode statements.
 %%%%%%REFRENCE A SECTION NUMBER%%%%%%%%%%%%
 
-Use a \emph{create_expression} with the selection keyword to switch from Main Mode to Selection Mode
+Use a \ecode{create\_expression} with the selection keyword to switch from Main Mode to Selection Mode
 \begin{center}
-    \emph{create_expression} : create article\bf{?} new\bf{?} selection
+    \ecode{create\_expression} \code{: create article\bf{?} new\bf{?} selection}\\
 \end{center}
 
-Use a \emph{create_expression} with the criteria keyword to switch from Main Mode to Criteria Mode
+Use a \ecode{create\_expression} with the criteria keyword to switch from Main Mode to Criteria Mode
 \begin{center}
-    \emph{create_expression} : create article\bf{?} new\bf{?} criteria
+    \ecode{create\_expression} \code{: create article\bf{?} new\bf{?} criteria}\\
 \end{center}
 
-To end your DERP program or close the DERP interpreter use a \emph{stop_expression} in Main Mode
+To end your DERP program or close the DERP interpreter use a \ecode{stop\_expression} in Main Mode
 \begin{center}
-    \emph{stop_expression} : stop \bf{|} exit
+    \ecode{stop\_expression} \code{: stop \bf{\textbar} exit}\\
 \end{center}
 
 \subsection{Selection Mode}
@@ -33,7 +33,7 @@ While in Selection Mode, statements which build the query, read the query statem
 Selection Mode are all valid. See section [section #] for more details about Selection Mode statements.
 %%%%REFREENCE A SECTION NUMBER %%%%%%%%%%%%%%%%%%
 
-To exit Selection Mode (and return to Main Mode), use a \emph{stop_expression}.
+To exit Selection Mode (and return to Main Mode), use a \ecode{stop\_expression}.
 
 \subsection{Criteria Mode}
 Criteria mode is very similar to selection mode; it is used to create criteria rather than selections. 
@@ -42,5 +42,5 @@ it is a filter that can be applied to a selection, but it is not a valid selecti
 See section [section #] for more details about Criteria Mode statements.
 %%%%%REFRENCE A SECTION NUMBER%%%%%%%%
 
-To exit Criteria Mode (and return to Main Mode), use a \emph{stop_expression}.
+To exit Criteria Mode (and return to Main Mode), use a \ecode{stop\_expression}.
 

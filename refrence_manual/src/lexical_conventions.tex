@@ -3,7 +3,7 @@
 \subsection{White Space}
 White space in the DERP language is interpreted in one of three ways, 
 depending upon its context. Any whitespace character (that is, any 
-character in the set [\\r, \\n, \\t, ‘ ‘]) can be used as a part of a 
+character in the set [\textbackslashr, \textbackslashn, \textbackslasht, ‘ ‘]) can be used as a part of a 
 string literal used to identify something to the interpreter. 
 The whitespace character \n (a unix-style newline) following any sequence 
 of non-whitespace text indicates the end of a DERP statement to be parsed. 
@@ -23,8 +23,8 @@ required for the syntax to be valid. The common syntax elements and keywords
 are defined here.
 
 \begin{center}
-    \emph{article} : a \bf{|} an \bf{|} the
-    \emph{string} : "[a-zA-Z]+"
-    \emph{digit} : [0-9]
-    \emph{number} : \emph{digit}\bf{+([.,]}\emph{digit}\bf{+)?
+    \ecode{article} \code{: a \bf{\textbar} an \bf{\textbar} the}
+    \ecode{string} \code{: "[a-zA-Z]+"}
+    \ecode{digit} \code{: [0-9]}
+    \ecode{number} \code{: \textit{digit}\bf{+([.,]}\textit{digit}\bf{+)\bf{?}}
 \end{center}
