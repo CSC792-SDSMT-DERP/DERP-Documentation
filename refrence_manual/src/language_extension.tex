@@ -1,6 +1,6 @@
 \section{A Note About Language Extension}
-\item Because one of the main features of DERP is that it supports loading and unloading
-of language extension modules, there are some guarantees we can make in this document 
+Because one of the main features of DERP is that it supports loading and unloading
+of language extension modules, there are some guarantees we can make in this document
 which will only hold true for the base language with no loaded modules.
 
 Modules are allowed to define additional parse rules for the following tokens of DERP:
@@ -9,14 +9,14 @@ Modules are allowed to define additional parse rules for the following tokens of
 \item field
 \item sortkey
 \end{itemize}
-Furthermore, modules are allowed to define any additional parse rules they would like, so 
-long as those parse rules are used within the additional definitions for the above tokens 
-and do not redefine other DERP parse rules. Fields and sources are defined further below in [section #]. 
+Furthermore, modules are allowed to define any additional parse rules they would like, so
+long as those parse rules are used within the additional definitions for the above tokens
+and do not redefine other DERP parse rules. Fields and sources are defined further below in [section \#].
 %%%     REFRENCE A LATER SECTION ABOVE      %%%%%%%%%%%
 For example, a source module for interfacing with a Reddit API module might define the following rules:
-\begin{center}
-    \ecode{source} \code{: \textit{subreddit string} \bf{\textbar} \textit{reddit}}\\
-    \ecode{field} \code{: \textit{title} \bf{\textbar} \textit{upvotes} \bf{\textbar} \textit{tags} \bf{\textbar} \textit{nsfw}}\\
-    \ecode{nsfw} \code{: \textit {nsfw} \bf{\textbar} \textit{not safe for work}}\\
-    \ecode{sortkey} \code{: \textit{popular}}\\
-\end{center}
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+    \myitem{\textit{source}}{:} \texttt{subreddit \textit{string} \textbf{\textbar} reddit}\\
+    \myitem{\textit{field}}{:} \texttt{title \textbf{\textbar} upvotes \textbf{\textbar} tags \textbf{\textbar} nsfw}\\
+    \myitem{\textit{nsfw}}{:} \texttt{nsfw \textbf{\textbar} not safe for work}\\
+    \myitem{\textit{sortkey}}{:} \texttt{popular}\\
+\end{description}

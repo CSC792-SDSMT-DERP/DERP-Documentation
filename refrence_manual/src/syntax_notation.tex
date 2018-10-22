@@ -1,17 +1,19 @@
 \section{Syntax Notation}
-Syntax definitions in this reference will be separated from surrounding text by an empty line, 
-indented, and written in a monospace font. The grammar definitions will follow Backus-Naur form, 
+Syntax definitions in this reference will be separated from surrounding text by an empty line,
+indented, and written in a monospace font. The grammar definitions will follow Backus-Naur form,
 occasionally using Regular Expression syntax for brevity. Additionally, definitions will use the following conventions:
+
 \begin{itemize}
 \item Terminals will be unformatted; keywords will be expressed as a sequence of terminal characters.
 \item Nonterminals will be \textit{italicized}
-\item Characters which could be considered either terminals or BNF/Regular Expression syntax will be \bf{bold} when they should be interpreted as part of BNF or Regular Expression syntax.
+\item Characters which could be considered either terminals or BNF/Regular Expression syntax will be \textbf{bold} when they should be interpreted as part of BNF or Regular Expression syntax.
 \item All terminals shown are lower-case text; however, DERP parsers should match them case-insensitive.
 \item Production definitions follow the format
-\begin{center}
-\ecode{nonterminal} \code{\bf{:} \textit{formula}}\\
-\end{center}
 \end{itemize}
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+\myitem{nonterminal}{:} \texttt{textit{formula}}
+\end{description}
+
 
 Where the \ecode{formula} is any syntactic rules for parsing the \ecode{nonterminal}.
 Furthermore,  the rest of this manual will reference specific terminals, and nonterminals inline using the same monospace font and formatting.

@@ -1,169 +1,315 @@
 \section{Statements and Expressions}
-All statements in DERP are a single line of text beginning with some expression 
-and ending with the newline character. There is no provision for splitting a 
-statement across multiple lines. Most expressions listed in this section are 
-valid only in the mode they are listed under, but there is one special expression 
-that is always valid: \ecode{stop\_expression}. (A version of the \ecode{recall\_expression} 
-is also valid at all times, but the syntax differs depending on the mode, so each version 
+All statements in DERP are a single line of text beginning with some expression
+and ending with the newline character. There is no provision for splitting a
+statement across multiple lines. Most expressions listed in this section are
+valid only in the mode they are listed under, but there is one special expression
+that is always valid: \ecode{stop\_expression}. (A version of the \ecode{recall\_expression}
+is also valid at all times, but the syntax differs depending on the mode, so each version
 will be listed under the appropriate mode heading below)
-\begin{center}
-    \ecode{statement} \code{: \textit{expression} \bf{'}\n\bf{'}}\\
-\end{center}
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+    \myitem{\textit{statement}}{:} \texttt{\textit{expression} \textbf{'}\textbackslash n\textbf{'}}\\
+\end{description}
 
-Rather than list every possible expression type here, we use the convention throughout 
-this document that any nonterminal ending with \ecode{\_expression} is a valid production of 
+Rather than list every possible expression type here, we use the convention throughout
+this document that any nonterminal ending with \ecode{\_expression} is a valid production of
 \ecode{expression}.\footnote{It is intentional that on\_exp and with\_exp do not match this convention.}
 
 \subsubsection{Stop}
-The Stop expression can be used in any context to switch modes back to the previous mode. In Selection 
-or Criteria mode, this means returning to the Main Mode. In Main Mode, the Stop expression is used to 
-end the DERP program. If DERP code is being run directly through an interactive interpreter, this should 
+The Stop expression can be used in any context to switch modes back to the previous mode. In Selection
+or Criteria mode, this means returning to the Main Mode. In Main Mode, the Stop expression is used to
+end the DERP program. If DERP code is being run directly through an interactive interpreter, this should
 end the interpreter loop.
 
 The stop expression is simply one of the keywords stop or exit
-\begin{center}
-    \ecode{stop\_expression} \code{: stop \bf{\textbar} exit}
-\end{center}
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+    \myitem{\textit{stop\_expression}}{:} \texttt{stop \textbf{\textbar} exit}\\
+\end{description}
 
 \subsection{Main Mode}
-The main mode allows users to load and unload modules and to delete, execute, and display the definitions 
+The main mode allows users to load and unload modules and to delete, execute, and display the definitions
 of existing criteria and selections.
 
 \subsubsection{Load/Unload}
-As mentioned above, source modules are imported code. These imports are done with the \ecode{load\_expression}, 
-and sources modules can be unloaded with the \ecode{unload\_expression}. While a source is loaded, its parse 
+As mentioned above, source modules are imported code. These imports are done with the \ecode{load\_expression},
+and sources modules can be unloaded with the \ecode{unload\_expression}. While a source is loaded, its parse
 rules will be used to parse any statements in addition to the standard DERP language rules.
 
 Loading source modules is done with the expression
-\begin{center}
-    \ecode{unload\_expression} \code{: unload \textit{string}}\\
-\end{center}
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+    \myitem{\textit{load\_expression}}{:} \texttt{load \textit{string}}\\
+\end{description}
 
-Where the string given should be the same string name that was used to load the module originally. 
+Where the string defines the name of the source to be used. It is left to the interpreter application to define
+the format of the plugin itself and how to make the plugin file accessible to the interpreter.
+
+Unloading source modules is done with the statement
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+    \myitem{\textit{unload\_expression}}{:} \texttt{unload \textit{string}}\\
+\end{description}
+
+Where the string given should be the same string name that was used to load the module originally.
 It is not valid to use the unload keyword with a name that was not previously used to load a source module.
 
-\subsubsection{Recall}
-The recall expression can be used from Main Mode to retrieve the lines of DERP code that make up a 
-criteria or selection. It follows the syntax
-\begin{center}
-    \ecode{recall\_expression}  \code{:  recall \textit{string}}\\
-\end{center}
 
-The string following the keyword recall is the name that was given in a preceding save expression from 
+
+\subsubsection{Recall}
+The recall expression can be used from Main Mode to retrieve the lines of DERP code that make up a
+criteria or selection. It follows the syntax
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+    \myitem{\textit{recall\_expression}}{:} \texttt{recall \textit{string}}\\
+\end{description}
+
+The string following the keyword recall is the name that was given in a preceding save expression from
 within Criteria Mode or Selection Mode.
 
 \subsubsection{Clear}
-The clear expression is used to delete a created Criteria or Selection. After a name is used with the 
-\ecode{clear\_expression}, it will not be valid in any future \ecode{read\_expression}, \ecode{recall\_expression}, or \ecode{match\_expression} 
+The clear expression is used to delete a created Criteria or Selection. After a name is used with the
+\ecode{clear\_expression}, it will not be valid in any future \ecode{read\_expression}, \ecode{recall\_expression}, or \ecode{match\_expression}
 unless a \ecode{create\_expression} is used to assign the string a new selection or criterion
-\begin{center}
-    \ecode{clear\_expression}  \code{:  clear \textit{string}}\\
-\end{center}
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+    \myitem{\textit{clear\_expression}}{:} \texttt{clear \textit{string}}\\
+\end{description}
 
 \subsubsection{Read}
-Read expressions are used to execute a selection and output the resulting Posts. Optionally, a read 
+Read expressions are used to execute a selection and output the resulting Posts. Optionally, a read
 expression can have a sort predicate, which defines the order that the resulting Posts should be outputted.
 
 Read expressions follow the syntax
-\begin{center}
-    \textit{read\_expression}  :  read \textit{string} \textit{sort\_predicate}\bf{?}\\
-    \textit{sort\_predicate}  :  \bf{(}sorted \bf{\textbar} ordered\bf{)} by \textit{sortkey order}\bf{?}\\
-    \textit{order}  :  ascending \bf{\textbar} descending\\
-\end{center}
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+    \myitem{\textit{read\_expression}}{:}  \texttt{read \textit{string} \textit{sort\_predicate}\textbf{?}}\\
+    \myitem{\textit{sort\_predicate}}{:}  \texttt{\textbf{(}sorted \textbf{\textbar} ordered\textbf{)} by \textit{sortkey order}\textbf{?}}\\
+    \myitem{\textit{order}}{:}  \texttt{ascending \textbf{\textbar} descending}\\
+\end{description}
 
-The string given immediately after the read keyword should correspond to a previously created selection. 
-Any field defined by a source module is to be a valid \textit{sortkey}, however source modules may define additional 
-syntax for \textit{sortkey} to allow sorting by more context-specific means. Any posts returned from the selection 
-for which the \textit{sortkey} is not relevant (for example, if multiple sources are used in the selection, and the 
-\textit{sortkey} is specific to one of the sources) should be sorted to the end of the list in any order.
+The string given immediately after the read keyword should correspond to a previously created selection.
+Any field defined by a source module is to be a valid \ecode{sortkey}, however source modules may define additional
+syntax for \ecode{sortkey} to allow sorting by more context-specific means. Any posts returned from the selection
+for which the \ecode{sortkey} is not relevant (for example, if multiple sources are used in the selection, and the
+\ecode{sortkey} is specific to one of the sources) should be sorted to the end of the list in any order.
 
-The DERP language does not define what constitutes ‘outputting posts’ after they are found using a query. 
-This leaves the interpreter open to any number of formats for conveying post information to the user. 
-It should be noted that DERP selection semantics guarantee that determining which posts can be done on a 
-group of posts, and after they are processed they do not need to be re-processed if another group of posts 
-is retrieved. This allows interpreters to work with stream sources that can provide a \st{semi-infinite} very 
+The DERP language does not define what constitutes ‘outputting posts’ after they are found using a query.
+This leaves the interpreter open to any number of formats for conveying post information to the user.
+It should be noted that DERP selection semantics guarantee that determining which posts can be done on a
+group of posts, and after they are processed they do not need to be re-processed if another group of posts
+is retrieved. This allows interpreters to work with stream sources that can provide a \st{semi-infinite} very
 large result as multiple smaller pieces.
 
 \subsubsection{Create}
-The create expression is used exclusively to trigger either selection mode or criteria mode, depending upon 
+The create expression is used exclusively to trigger either selection mode or criteria mode, depending upon
 whether it is used with the criteria or selection keyword.
 
 Create expressions take the form
-\begin{center}
-    \ecode{create\_expression}  \texttt{:  create \textit{article}\bf{?} new\bf{?} \bf{(}selection \bf{\textbar} criteria\bf{)}}\\
-\end{center}
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+    \myitem{\textit{create\_expression}}{:} \texttt{create \textit{article}\textbf{?} new\textbf{?} \textbf{(}selection \textbf{\textbar} criteria\textbf{)}}\\
+\end{description}
 
 \subsection{Criteria Mode}
-After a \ecode{create\_expression} using the keyword \code{criteria} is read, all following statements will be interpreted using 
+After a \ecode{create\_expression} using the keyword \code{criteria} is read, all following statements will be interpreted using
 the criteria creation syntax defined here. Criteria mode ends when the stop statement is found.
 
-Valid expressions in criteria mode can used to add things to the filter or remove them, read back the criteria so 
+Valid expressions in criteria mode can used to add things to the filter or remove them, read back the criteria so
 far, and save the criteria with a name.
 
 \subsubsection{Recall}
-The \ecode{recall\_expression} can be used in criteria mode to repeat back the add and remove expressions used for the 
+The \ecode{recall\_expression} can be used in criteria mode to repeat back the add and remove expressions used for the
 criterion so far.
-\begin{center}
-    \ecode{recall\_expression}  \code{:  recall}\\
-\end{center}
-While this is not a particularly useful functionality for users who are writing DERP code in a text file to be 
-parsed, it exists in anticipation of DERP interpreters which take input and produce output in some format other 
-text on a screen. For example, it would be useful in an implementation of the DERP interpreter which takes voice 
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+    \myitem{\textit{recall\_expression}}{:}  \texttt{recall}\\
+\end{description}
+While this is not a particularly useful functionality for users who are writing DERP code in a text file to be
+parsed, it exists in anticipation of DERP interpreters which take input and produce output in some format other
+text on a screen. For example, it would be useful in an implementation of the DERP interpreter which takes voice
 commands.
 
 
 \subsubsection{Save}
-The \ecode{save\_expression} is used to save the set of \ecode{add\_expressions} and \ecode{remove\_expressions} that have been executed since 
-criteria mode was last entered. This set of commands is named according to the second part (the \ecode{string}) of the 
+The \ecode{save\_expression} is used to save the set of \ecode{add\_expressions} and \ecode{remove\_expressions} that have been executed since
+criteria mode was last entered. This set of commands is named according to the second part (the \ecode{string}) of the
 expression. Saved criteria become available for use immediately. Using saved criteria is covered with the \code{matching} qualifier
-\begin{center}
-    \ecode{save\_expression}  \code{:  save as string}\\
-\end{center}
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+    \myitem{save\_expression}{:} \texttt{save as \textit{string}}\\
+\end{description}
 
 \subsubsection{Add/Remove Posts}
-The most important expressions in criteria mode are the \ecode{add\_expression} and \ecode{remove\_expression}. They build a sequence of 
+The most important expressions in criteria mode are the \ecode{add\_expression} and \ecode{remove\_expression}. They build a sequence of
 executable statements that are used to filter the list of elements. Both expressions have similar form
-\begin{center}
-    \ecode{add\_expression}  \code{:  add posts selector}\\
-    \ecode{remove\_expression}  \code{:  remove posts selector}\\
-\end{center}
-Both expressions use the selector, which is a series of one or more qualifiers strung together to indicate what 
-items from a list of posts should be accepted by the criteria.
-
-    \ecode{selector}  \code{:  \textit{qualifier\_or}\\
-    \ecode{qualifier\_or}  \code{:  \textit{qualifier\_or} or \textit{qualifier\_and} \bf{\textbar} \textit{qualifier\_and}\\
-    \ecode{qualifier\_and} \code{:  \textit{qualifier\_and} and \textit{qualifier} \bf{\textbar} qualifier}\\
-
-Qualifiers can be combined using the words ‘and’ and ‘or’. Precedence rules for these combine keywords follow standard 
-C \textbar\textbar and && precedence. That is, ‘and’ is higher precedence than ‘or’, and both are left-associative. Forcing precedence 
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+    \myitem{\textit{add\_expression}}{:}  \texttt{add posts \textit{selector}}\\
+    \myitem{\textit{remove\_expression}}{:}  \texttt{remove posts \textit{selector}}\\
+\end{description}
+Both expressions use the selector, which is a series of one or more qualifiers strung together to indicate what
+items from a list of posts should be accepted by the criteria.\\
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+    \myitem{\textit{selector}}{:} \texttt{\textit{qualifier\_or}}\\
+    \myitem{\textit{qualifier\_or}}{:}  \texttt{\textit{qualifier\_or} or \textit{qualifier\_and} \textbf{\textbar} \textit{qualifier\_and}}\\
+    \myitem{\textit{qualifier\_and}}{:}  \texttt{\textit{qualifier\_and} and \textit{qualifier} \textbf{\textbar} \textit{qualifier}}\\
+\end{description}
+Qualifiers can be combined using the words ‘and’ and ‘or’. Precedence rules for these combine keywords follow standard
+C \textbar\textbar and \&\& precedence. That is, ‘and’ is higher precedence than ‘or’, and both are left-associative. Forcing precedence
 through the use of parentheses, as C allows, is not permitted in DERP.
 
-\ecode{qualifiers} can be any of a number of defined checks. These checks can look at any field exposed as part of the post and 
-match it against the requirement given by the code. Some examples of valid qualifiers are \code{“with a date before 1990”}, 
+\ecode{qualifiers} can be any of a number of defined checks. These checks can look at any field exposed as part of the post and
+match it against the requirement given by the code. Some examples of valid qualifiers are \code{“with a date before 1990”},
 \code{“which are nsfw”}, and \code{“with over twenty upvotes”}\footnote{Provided that source modules are loaded which define the syntax\\
-\ecode{Field}  \code{:  \textit{nsfw} \bf{\textbar} \textit{upvotes} \textbar \textit{date}}}
-\begin{center}
-\ecode{qualifier}  \bf{:}  \ecode{with\_exp article field date\_check date}\\
-               \bf{\textbar}  \ecode{with\_exp string substring\_check field}\\
-               \bf{\textbar}  \ecode{boolean\_check field}\\
-               \bf{\textbar}  \ecode{string\_check field string}\\
-               \bf{\textbar}  \ecode{number\_check number field}\\
-               \bf{\textbar}  \ecode{on\_exp string}\\
-               \bf{\textbar}  \ecode{matching string}\\
-\end{center}
-With the exception of the matching and \ecode{on\_exp} qualifiers, each of the qualifiers listed here is used to check a single piece of 
-information against a \textit{field} associated with a post. Below are the definitions of sub-expressions used in the qualifiers followed 
-by the definitions of each of the different \ecode{*\_check} qualifier rules.       
-\begin{center}
-    \ecode{with\_exp} \code{: with \textit{\textbar} without}
-\end{center}
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+\myitem{\textit{Field}}{:}  \texttt{\textit{nsfw} \textbf{\textbar} \textit{upvotes} \textbf{\textbar} \textit{date}}
+\end{description}}
 
-\subusubsection{date\_check}
-Date checks, along with the date production, are used in a qualifier to indicate that you would like to filter posts by the date that 
-they were published. The date check can be used to get points from an exact date, or a range beginning or ending at a specific date. 
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+  \myitem{\textit{qualifier}}{:}  \ecode{with\_exp article field date\_check date}\\
+  \myitem{}{\textbf{\textbar}}  \ecode{with\_exp string substring\_check field}\\
+  \myitem{}{\textbf{\textbar}}  \ecode{boolean\_check field}\\
+  \myitem{}{\textbf{\textbar}}  \ecode{string\_check field string}\\
+  \myitem{}{\textbf{\textbar}}  \ecode{number\_check number field}\\
+  \myitem{}{\textbf{\textbar}}  \ecode{on\_exp string}\\
+  \myitem{}{\textbf{\textbar}}  \ecode{matching string}\\
+\end{description}
+
+With the exception of the matching and \ecode{on\_exp} qualifiers, each of the qualifiers listed here is used to check a single piece of
+information against a \textit{field} associated with a post. Below are the definitions of sub-expressions used in the qualifiers followed
+by the definitions of each of the different \ecode{*\_check} qualifier rules.
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+    \myitem{\textit{with\_exp}}{:} \texttt{with \textbf{\textbar} without}
+\end{description}
+
+\subsubsection{date\_check}
+Date checks, along with the date production, are used in a qualifier to indicate that you would like to filter posts by the date that
+they were published. The date check can be used to get points from an exact date, or a range beginning or ending at a specific date.
 Ranges between two separate dates can be achieved through combining multiple date \ecode{qualifiers} with the keywords and and or.
 
-Dates contain, at minimum, some year; but they may contain a month, and if they contain a month, they may contain a numbered day of 
-that month. The keywords on, after, and before correspond to the conventional numerical comparisons =, >, and <.
+Dates contain, at minimum, some year; but they may contain a month, and if they contain a month, they may contain a numbered day of
+that month. The keywords on, after, and before correspond to the conventional numerical comparisons =, $>$, and $<$.
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+    \myitem{\textit{qualifier}}{:}  \texttt{\textit{with\_exp article field date\_check date}}\\
+    \myitem{\textit{date\_check}}{:}  \texttt{date (on \textbf{\textbar} after \textbf{\textbar} before)}\\
+    \myitem{\textit{date}}{:}  \texttt{\textbf{(} month day\textbf{?} \textbf{)?} year}\\
+    \myitem{\textit{year}}{:}  \ecode{digit digit digit digit}\\
+    \myitem{\textit{month}}{:} \texttt{january \textbf{\textbar} february \textbf{\textbar} march \textbf{\textbar} april \textbf{\textbar} may \textbf{\textbar} june \textbf{\textbar} july \textbf{\textbar} august \textbf{\textbar} september \textbf{\textbar} october \textbf{\textbar} november \textbf{\textbar} december}\\
+    \myitem{\textit{day}}{:} \texttt{\textbf{[0-3]} \textit{digit}}\\
+\end{description}
 
-    
+\subsubsection{substring\_check}
+Substring checks are used the compare a string against one of the fields associated with the post and return true if the string is part
+of the data for that field. For example, if there is a field called “tags”, one might use the substring check to determine if “tags”
+contains the word “saved”. The qualifier to do that operation might look something like this: \texttt{‘with “saved” in the tags’}
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+    \myitem{\textit{qualifier}}{:} \ecode{with\_exp string substring\_check field}
+    \ecode{substring\_check}{:} \texttt{in the \textbf{?}}
+\end{description}
+
+\subsubsection{boolean\_check}
+Boolean checks are used to check the values of fields that contain boolean data. One example is the common Reddit tag ‘nsfw’. This tag
+is so common that a Reddit source module for DERP may make nsfw its own field in posts it creates. DERP code could then filter out posts
+with this field set to true using the qualifier ‘which are not nsfw’
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+        \myitem{\textit{qualifier}}{:}  \ecode{boolean\_check field }
+        \myitem{\textit{boolean\_check}}{:}  \texttt{which are not\textbf{?}}
+\end{description}
+
+\subsubsection{string\_check}
+String checks are similar to substring checks in that they match a string against the data of a field; however, string checks require
+that the field’s data match exactly what is given in the DERP code. One might write the following qualifier to get posts that are not
+written by a specific person: \code{‘without the exact author “fred flintstone”’}. Note, this would require that the source module which
+generated the post populates the field ‘author’
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+          \myitem{\textit{qualifier}}{:}  \ecode{string\_check field string}
+          \myitem{\textit{string\_check}}{:}  \texttt{\textit{with\_exp} the exact}
+\end{description}
+
+
+
+
+\subsubsection{number\_check}
+Number checks are used to do numerical comparisons on the data in post fields.
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+        \myitem{\textit{qualifier}}{:}  \texttt{\textit{number\_check number field}}\\
+        \myitem{\textit{number\_check}}{:}  \texttt{\textit{with\_exp}\textbf{?} exactly \textbf{\textbar} \textit{above\_expression} \textbf{\textbar} roughly}\\
+        \myitem{\textit{above\_expression}}{:}  \texttt{over \textbf{\textbar} greater than}\\
+        \myitem{\textit{below\_expression}}{:}  \texttt{under \textbf{\textbar} less than}\\
+\end{description}
+The keyword exactly, and expressions \ecode{above\_expression} and \ecode{below\_expression} are mapped to the traditional mathematical operations ==, $>$, and $<$, respectively.
+The keyword roughly indicates a match within some epsilon of the specified value. The value of epsilon used for a roughly match is implementation-defined.
+
+Note that defining the \ecode{number\_check} production using \ecode{with\_exp} provides some additional flexibility in how qualifiers can be used to match numbers. To match a
+number in a way analogous to the standard >= operation, DERP code could specify the single qualifier \code{‘without less than x field’}; however, it may be more natural
+for the programmer to specify the combined qualifier ‘with less than x field or with exactly x field’.
+
+
+
+
+
+\subsubsection{The on\_exp match}
+The \texttt{\textit{on\_exp}} is used to do a general match of a post against a topic. Unlike all of the qualifiers listed above, this qualifier is not explicitly
+tied to any one field in a post. The exact method of doing this check is implementation-defined, and may be part of the source module interface. This qualifier
+allows for matching in cases where the fields provided are insufficient and in cases where many fields would have to be specified in their own qualifiers to achieve
+the same result.
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+      \myitem{\textit{qualifier}}{:} \texttt{\textit{on\_exp string}}\\
+      \myitem{\textit{on\_exp}}{:} \texttt{on \textbf{\textbar} about}\\
+\end{description}
+
+
+
+
+\subsubsection{matching}
+The matching qualifier is the second rule that isn’t tied to a specific field or set of fields in a post. Using the matching qualifier, DERP programmers can compose criteria.
+For example, say a programmer created a criteria to get posts about science from 2017 and named it ‘modern science’. The programmer could later create the qualifier \texttt{‘about cars matching “modern science”’}.
+This qualifier would expand to accept any posts from 2017 about the science associated with cars. Obviously, this is a fairly trivial example; the matching qualifier can be
+used to group qualifiers together and then use them to create arbitrarily complex new qualifiers.
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+    \myitem{\textit{qualifier}}{:}  \texttt{matching \textit{string}}\\
+\end{description}
+For the matching qualifier to be valid, the string must meet a single requirement:
+\begin{itemize}
+\item It must be the name that a criterion was saved in using the save\_expression from within criteria creation mode prior to the current DERP command
+\end{itemize}
+When the matching qualifier is encountered, the current state of the criterion specified is copied, and stored with the criteria being created.
+Saving a new criterion with the same name will NOT have any effect on previously defined matching qualifiers.
+
+
+
+\subsection{Selection Mode}
+As mentioned above, selection mode is very similar to criteria mode, but has extra capabilities. While \ecode{add\_expressions} and \ecode{remove\_expressions} in Criteria Mode
+cannot be used to indicate posts from a specific source, both expressions CAN indicate one or more sources in Selection Mode. This is indicated by a grammar
+change in the selector nonterminal.
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+    \myitem{\textit{selector}}{:} \texttt{\textit{qualifier\_or} \textbf{\textbar} from \textit{source qualifier\_or}\textbf{?}}
+    \myitem{\textit{source}}{:} \texttt{\textit{source} \textbf{(} and \textbf{|} or \textbf{)} \textit{source}}
+\end{description}
+As this Selection Mode syntax shows, selectors may contain one or more sources, and if any sources are specified, then qualifiers are not required. Although
+sources are defined as being combined through the keywords and and or just like qualifiers, there is no precedence associated with the keywords when they
+are used to combine sources. Combining sources with either keyword will always indicate posts that are found in either of the sources. While this may at
+first seem like an odd specification to have, it makes more sense in the context that DERP is intended to mimic natural language.
+
+The definition of source defined in Selection Mode is really only a utility syntax. The definitions of the nonterminal that will be matched in input come
+from source modules that are loaded.
+
+Because \ecode{remove\_expressions} in selection mode are no longer limited to the fields of posts, but can also remove posts based solely on their origin, ambiguities
+can arise over the behavior of these expressions when posts in a query come from entirely different sources. To keep things simple, the DERP language includes
+the following semantic rule: \ecode{remove\_expression} is valid in Selection mode iff
+\begin{itemize}
+\item It does not contain any \ecode{source}, and at least one \ecode{add\_expression} has been executed after selection mode was entered, but before the \ecode{remove\_expression} in question.
+\item OR, for every source in the \ecode{remove\_expression} that matches syntax defined by a source module, that source was used in an \ecode{add\_expression} after selection mode was entered, but before the \ecode{remove\_expression} in question.
+\end{itemize}
+As an example, this set of statements is valid in Selection Mode…\footnote{Provided that the following syntax has been added\\
+\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
+\myitem{\textit{source}}{:}  \texttt{cnn \textbf{\textbar} fox}
+\end{description}}
+\begin{lstlisting}
+create new selection
+    add posts from cnn on Tesla
+    remove posts from cnn with "Musk" in title
+    add posts from fox
+    remove posts with date before 2015
+    save as "misc"
+stop
+\end{lstlisting}
+...but these sets of statements are not
+\begin{lstlisting}
+Create new selection
+    Remove posts about "food"
+
+Create new selection
+    add posts from cnn
+    remove posts from fox about "metal"
+\end{lstlisting}

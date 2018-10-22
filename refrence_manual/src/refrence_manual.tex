@@ -2,7 +2,14 @@
 \usepackage[margin=1in]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{comment}
+
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{upquote}
 \usepackage{listings}
+\lstset{upquote=true}
+\usepackage{bold-extra}
+\usepackage{soul}
 \usepackage{titlesec}       % Lines under Sections
 \titleformat{\section}
   {\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
@@ -12,7 +19,7 @@
 \patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
 \patchcmd{\ttlh@hang}{\noindent}{}{}{}
 \makeatother
-\newcommand{\code}{\texttt}
+\newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\ecode}[1]{\textit{\code{#1}}}
 %\renewcommand\maketitle{}
 
@@ -26,16 +33,15 @@
     urlcolor=blue
 }
 \pagenumbering{gobble}
-% \pagenumbering{roman} % set the numbering style to lowercase letter\autoref*{#1} 
+% \pagenumbering{roman} % set the numbering style to lowercase letter\autoref*{#1}
 \newcommand*{\fullref}[1]{\hyperref[{#1}]{section \ref*{#1} \nameref*{#1} }}
 \title{\textbf{Dictation Evaluation Reddit Parser}}
 
 \author{
 Garcia, Benjamin \and
-Lembke, Logan \and 
-MacMillan, Kyle  \and 
-Smith, Christopher \and 
-Stelter, Andrew 
+Lembke, Logan \and
+Smith, Christopher \and
+Stelter, Andrew
 }
 \date{September 21, 2018}
 
@@ -46,6 +52,17 @@ Stelter, Andrew
 {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
 \titlespacing*{\paragraph}
 {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+
+\usepackage{enumitem}
+\newlength\onelen
+\newlength\twolen
+
+\setlength\onelen{4cm}
+\setlength\twolen{2cm}
+\newcommand{\myitem}[2]{%
+  \item[\texttt{#1}] \makebox[\twolen][l]{\texttt{#2}}%
+  }
 
 \begin{document}
 
@@ -63,40 +80,34 @@ Stelter, Andrew
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% INTRO SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
-\hypersetup{
-    colorlinks,
-    citecolor=blue,
-    filecolor=black,
-    linkcolor=blue,
-    urlcolor=blue
-}
+% \hypersetup{
+%     citecolor=blue,
+%     filecolor=black,
+%     linkcolor=blue,
+%     urlcolor=blue
+% }
 \pagenumbering{arabic}  % Set content page numbering to arabic numerals
 
 
 \part{Language Tutorial}
 \section{Introduction}
 
-\input{getting_started.tex}
-\input{basic_usage.tex}
+%\input{getting_started.tex}
+%\input{basic_usage.tex}
 
 
 
 \part{Refrence Guide}
 This section describes the DERP language, as outlined in the DERP Language white paper submitted
- to the course CSC 792 (Compilers) at the South Dakota School of Mines & Technology in the Fall 
- of 2018. This reference defines all of the main constructs of the language and gives some examples 
- of their usages; it will not contain hard definitions of any of the specific language constructs 
- defined in plugins to the language; however, it may use some as examples.
+to the course CSC 792 (Compilers) at the South Dakota School of Mines \& Technology in the Fall
+of 2018. This reference defines all of the main constructs of the language and gives some examples
+of their usages; it will not contain hard definitions of any of the specific language constructs
+defined in plugins to the language; however, it may use some as examples.
+\setlist[description]{font=\normalfont}
 \input{syntax_notation.tex}
 \input{language_extension.tex}
 \input{lexical_conventions.tex}
 \input{language_modes.tex}
 \input{data_types.tex}
 \input{statements_expressions.tex}
-
-
-
-
-
-
 \end{document}
