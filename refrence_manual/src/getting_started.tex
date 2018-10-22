@@ -2,69 +2,69 @@
 Using DERP is easy. The simplest query one can write with DERP is one which fetches posts from the front page of reddit.
 
 First, we must start the interpreter. After starting DERP, we are presented with an empty prompt.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 $ python3 DERP.py
 >>>
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 
 
 
 The first command entered into most DERP sessions is the \texttt{load} command. The load command tells DERP to add the language
 extensions needed to interact with a given resource. In the case of this tutorial, the first command will load the
 extensions needed to interact with Reddit.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 $ python3 DERP.py
 >>> load "reddit"
 >>>
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 
 
 
 The next command tells DERP to start building a new query called a selection.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 $ python3 DERP.py
 >>> load "reddit"
 >>> create a new selection
 >>>
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 
 
 
 Selections contain plans for gathering lists of postings. In this case, we want to simply add the latest posts from the front page of Reddit.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 $ python3 DERP.py
 >>> load "reddit"
 >>> create a new selection
 >>> add posts from "reddit"
 >>>
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 
 
 
 Selections can be executed immediately while they are being built. In order to fetch the posts specified by the current selection, we simply need to call \texttt{read}.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 $ python3 DERP.py
 >>> load "reddit"
 >>> create a new selection
 >>> add posts from "reddit"
 >>> read
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 
 
 
 This will bring up an interface for browsing through the latest posts from the front page of reddit. Once we have finished viewing the postings and exit out of the reading interface, we are dropped back into the DERP interpreter.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 $ python3 DERP.py
 >>> load "reddit"
 >>> create a new selection
 >>> add posts from "reddit"
 >>> read
 >>>
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 
 
 From here, we could execute various commands. We could save the selection so we can read through the front page of Reddit later. We could add more posts from different subreddits. Or, we could filter out posts we don’t want to see. For now, let’s just exit out. \texttt{Stop} will let DERP know we want to stop building a selection, and \texttt{exit} will stop DERP entirely.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 $ python3 DERP.py
 >>> load "reddit"
 >>> create a new selection
@@ -72,4 +72,4 @@ $ python3 DERP.py
 >>> read
 >>> stop
 >>> exit
-\end{lstlisting}
+\end{lstlisting}\end{minipage}

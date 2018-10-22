@@ -295,7 +295,7 @@ As an example, this set of statements is valid in Selection Mode…\footnote{Pro
 \begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
 \myitem{\textit{source}}{:}  \texttt{cnn \textbf{\textbar} fox}
 \end{description}}
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 create new selection
     add posts from cnn on Tesla
     remove posts from cnn with "Musk" in title
@@ -303,13 +303,13 @@ create new selection
     remove posts with date before 2015
     save as "misc"
 stop
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 ...but these sets of statements are not
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 Create new selection
     Remove posts about "food"
 
 Create new selection
     add posts from cnn
     remove posts from fox about "metal"
-\end{lstlisting}
+\end{lstlisting}\end{minipage}

@@ -7,19 +7,16 @@ We can use qualifiers based on phrases, tags, dates, and more.
 
 \subsection{The \texttt{Which} Keyword}
 Some posts may be marked with special flags such as the "verified" tag. We can check for the presence of these flags using ‘which’.
-
-
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "finance" which are "verified"
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 
 This selection only returns trustworthy, verified posts. We can also negate this expression by adding not.
-
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "finance" which are not "verified"
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 
 This could get us posts that we would miss using the preceding selection.
 
@@ -30,20 +27,20 @@ The \texttt{with} keyword allows us to define a qualifier which matches results 
 
 \subsection{Query by Contained Phrase}
 If we want to query for certain phrases in our posts, we can use \texttt{with ... in the} expressions. These expressions specify substring matches which are useful for filtering away unrelated topics.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "finance" with "stocks" in the body
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 
 This selection will retrieve posts in which the word ‘stocks’ occurs, allowing us to view posts that relate to the stock market rather than, say, savings accounts.
 
 
 \subsubsection{Query by Exact Phrase}
 If we know the exact title of an article we can find it in a given source using a \texttt{with the exact} expression.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "finance" with the exact title "CEO says part of October's market sell-off driven by programmatic trading"
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 
 More generally, if we know the exact value of a given string field, we can use a with the exact expression to match against it.
 
@@ -51,97 +48,97 @@ More generally, if we know the exact value of a given string field, we can use a
 
 \subsubsection{Query by Numeric Qualifier}
 If our source supports it, we can add qualifiers on the numeric properties of posts. For example, we can make sure to receive popular information by restricting results from Reddit based on their upvote counts. Here is a basic example.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "finance" with exactly 500 upvotes
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 This makes sure that our results have 500 upvotes, but it will retrieve results with only 500 upvotes. Usually, we would want to define a range of acceptable values for a numeric field. To accomplish this, we can use the ‘over’ and ‘under’ qualifiers.
 
 The \texttt{over} modifier requires that the returned posts have a numeric value \texttt{greater than} the value we asked for. In fact, the phrase greater than may be used instead of \texttt{over}.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "finance" with over 500 upvotes
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 Now we will only see posts that have over 500 upvotes. Similarly, the under or less than qualifier allows us to retrieve posts with a numeric value less than a given number.
 
 Sometimes we want to find posts with a field around certain value. We can use the roughly modifier to find posts which have a numeric value close to a given number.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "finance" with roughly 500 comments
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 The desktop implementation of DERP finds values within +/- 10\% of the given value.
 
 
 \subsubsection{Query by Date Qualifier}
 We can set what time period we want posts from by making a query on the date the post was made. For example, we may want to limit our selection to recent topics, because out of date topics may not be useful.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "finance" with a post date after october 20 2018
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 Assuming the current date was October 21 2018 this would get us posts in the last day. We can also use \texttt{before} and \texttt{on} to limit ourselves to dates before and equal to the given date, respectively.
 
 
 
 \subsubsection{Negative Qualifiers Using \texttt{Without}}
 We can also invert the meaning of a \texttt{with} statement by using \texttt{without}. For example, if we want finance posts without savings account information we could use the following selection.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "finance" without "savings accounts" in the body
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 \texttt{Without} is a good way to express negative logic in a qualifier, and it can allow for specifying selections without needing a remove statement.
 
 
 \subsection{The \texttt{On} Keyword}
 The \texttt{on} keyword makes it easy to perform a topic search. Another phrase that can be used in place of on is \texttt{about}. The actual functionality of \texttt{on} is implementation dependent. The original desktop implementation of \texttt{on} performs substring searches over the "topical" fields as defined by a given module. In this case, we can think about the the \texttt{on} as shorthand for multiple \texttt{with ... in the} qualifiers. Let’s use the same example as from the  \texttt{with ... in the} section above.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "finance" on "stocks"
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 We can negate \texttt{on} by placing the \texttt{not} modifier in front of it. The previous selection is equivalent to the following.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "finance"
 >>> remove posts not on "stocks"
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 \subsection{Combining Qualifiers Using \texttt{And} and \texttt{Or}}
 We may want to use multiple qualifiers when creating a selection. Consider the case in which we want to control what posts young children will see. We could prevent questionable content from showing up using the following query with \texttt{and}.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "all" which are "verified" and which are not "NSFW"
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 This statement will check for the presence of the verified flag and the absence of the NSFW tag. Alternatively, if we wanted at least one of our conditions to hold true we could replace the \texttt{and} with an \texttt{or}.
 
 When we use \texttt{and} and \texttt{or} together we need to make sure to understand how our qualifiers will be interpreted by the runtime. The \texttt{and} keyword has higher precedence than the \texttt{or} keyword, which has implications for how we chain statements. For instance, the following selection likely has an error.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "all" which are "verified" or which are not "NSFW" and with a post date after October 14 2018
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 We can infer that we tried to find recent trustworthy posts, but, in reality, older posts may slip through if they are marked "verified". As \texttt{and} is higher precedence than \texttt{or}, the date check is anded with the "NSFW" check before getting ored with the "verified" check. To write this selection correctly we can split it up into multiple add and remove statements.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "all" which are "verified" or which are not "NSFW"
 >>> remove posts without a post date after October 14 2018
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 An additional point to note is that when writing a selection, if \texttt{and} or \texttt{or} are not specified, the qualifiers are implied to have the \texttt{and} keyword between them.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "all" which are "verified" which are not "NSFW"
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 Is the same as
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "all" which are "verified" and which are not "NSFW"
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 Creating Complex Queries
 Now that we know more about how to construct a variety of queries, we can construct more realistic examples. For instance, let’s say we want the latest news within the last week, on a few of our favorite topics, while making sure to get only trustworthy sources. For the purpose of this example, the current date will be October 21 2018.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "worldnews" which are "verified" and which are not "NSFW" and with "stocks" in the body
 >>> add posts from subreddit "worldnews" with "sports" in the body or with "lebron"
 >>> remove posts from subreddit "worldnews" with "sports" in the body and with under 1000 upvotes
 >>> add posts from subreddit "worldnews" with "Brexit" in the title or with "France" in the body
 >>> remove posts with a post date before October 14 2018
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 This complex query will get us recent world news from trustworthy sources on stocks, that are popular on sports, and about the ‘Brexit’ or France from US sources. While this is a fairly diverse selection, it provides a glimpse into the potential for creating arbitrarily complex queries.
 
 Sometimes it takes a while to work out what exactly you want in a given selection. In fact, the selection may become so long that we’ve forgot what we asked for in the first place! Thankfully in the desktop version of DERP, we can simply scroll back up through our terminal. In order to support alternative interfaces to DERP, each implementation must implement the \texttt{recall} statement. The \texttt{recall} statement simply lists out each of the add and remove statements entered so far.

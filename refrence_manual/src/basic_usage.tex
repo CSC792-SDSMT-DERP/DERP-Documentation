@@ -4,31 +4,31 @@ In the next section, we will explore ways to join multiple sources of informatio
 Fetching Posts from Various Sources
 DERP handles fetching posts from various sources as provided by the loaded modules. The Reddit module provides a source for each subreddit. For example,
 the following snippet fetches the latest posts from the “worldnews” subreddit.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "worldnews"
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 We can combine multiple sources in a couple ways. The simplest way to do so is to use the \texttt{or} keyword. The \texttt{or} keyword may be repeatedly used to add posts
 from as many sources as needed.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "worldnews" or subreddit "news"
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 As DERP strives to fit natural English, the word \texttt{and} can be used in place of \texttt{or} in this case. The phrase “add posts from subreddit “worldnews” and
 subreddit “news”” is commonly understood as “add posts from subreddit “worldnews”, and add posts from subreddit “news””, rather than “add posts that
 are in both subreddit “worldnews” and subreddit “news””.
 
 Alternatively, we can use multiple add statements to construct an equivalent query.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "worldnews"
 >>> add posts from subreddit "news"
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 Removing Posts from Various Sources
 If we add posts from a given source, we can remove those posts later on using remove.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "worldnews"
 >>> add posts from subreddit "news"
 >>> remove posts from subreddit "worldnews"
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
