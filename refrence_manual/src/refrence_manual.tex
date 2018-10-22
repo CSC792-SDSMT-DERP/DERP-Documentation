@@ -7,7 +7,12 @@
 \usepackage{textcomp}
 \usepackage{upquote}
 \usepackage{listings}
-\lstset{upquote=true}
+\lstset{upquote=true,
+frame=single,
+breaklines=true,
+postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+aboveskip=20pt,belowskip=20pt,}
+
 \usepackage{bold-extra}
 \usepackage{soul}
 \usepackage{titlesec}       % Lines under Sections
@@ -58,8 +63,8 @@ Stelter, Andrew
 \newlength\onelen
 \newlength\twolen
 
-\setlength\onelen{4cm}
-\setlength\twolen{2cm}
+\setlength\onelen{3.5cm}
+\setlength\twolen{1cm}
 \newcommand{\myitem}[2]{%
   \item[\texttt{#1}] \makebox[\twolen][l]{\texttt{#2}}%
   }
@@ -91,9 +96,14 @@ Stelter, Andrew
 
 \part{Language Tutorial}
 \section{Introduction}
+This tutorial aims to quickly teach those skilled in the art how to use DERP to find, filter, and consume internet content. DERP is a Domain Specific Language (DSL) suited to information retrieval using natural English. For the purpose of this tutorial we will assume the existence of a ‘Reddit’ submodule which allows for retrieving data from www.reddit.com.
 
-%\input{getting_started.tex}
-%\input{basic_usage.tex}
+\subsection{Target Systems}
+DERP is written in python 3. As such, DERP will run wherever python 3 is available. The DERP language is intended to be adapted to multiple platforms such as smart home devices, desktop computers, and mobile phones. However, this document specifically covers the desktop implementation of DERP. Most modules, such as the Reddit module, additionally require internet access.
+\input{getting_started.tex}
+\input{basic_usage.tex}
+\input{qualifiers.tex}
+\input{reusing_selections.tex}
 
 
 
