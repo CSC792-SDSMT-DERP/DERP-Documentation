@@ -1,13 +1,12 @@
 \section{A Note About Language Extension}
 Because one of the main features of DERP is that it supports loading and unloading
-of language extension modules, there are some guarantees we can make in this document
-which will only hold true for the base language with no loaded modules.
+of language extension modules, there are some guarantees we will make in this document
+which only hold true for the base language with no loaded modules.
 
 Modules are allowed to define additional parse rules for the following tokens of DERP:
 \begin{itemize}
 \item source
 \item field
-\item sortkey
 \end{itemize}
 Furthermore, modules are allowed to define any additional parse rules they would like, so
 long as those parse rules are used within the additional definitions for the above tokens
@@ -19,5 +18,4 @@ For example, a source module for interfacing with a Reddit API module might defi
     \item[\nonterminal{source}] \bnf{:} \terminal{subreddit} \nonterminal{string} \bnf{|} \terminal{reddit}
     \item[\nonterminal{field}]\bnf{:} \nonterminal{title} \bnf{|} \terminal{upvotes} \bnf{|} \terminal{tags} \bnf{|} \nonterminal{nsfw} 
     \item[\nonterminal{nsfw}] \bnf{:} \terminal{nsfw} \bnf{|} \terminal{not safe for work}
-    \item[\nonterminal{sortkey}] \bnf{:} \terminal{popular}  
 \end{itemize}

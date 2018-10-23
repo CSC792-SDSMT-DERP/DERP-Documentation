@@ -25,7 +25,6 @@ Source modules are allowed to define new syntax rules for the following DERP non
 \begin{itemize}
 \item \nonterminal{source}
 \item \nonterminal{field}
-\item \nonterminal{sortkey}
 \end{itemize}
 When input is found to match the rule a module provided for source, it indicates that the
 source module will be able to convert that input to a set of posts.
@@ -33,10 +32,6 @@ source module will be able to convert that input to a set of posts.
 Source modules are allowed to populate an arbitrary set of key-value fields in the posts
 they create. Defining new syntax for \nonterminal{field} extends the DERP parser to be able to recognize
 the keys that the source module may populate in posts it retrieves.
-
-By default, every field is also a sort key; however, it may be desirable to sort posts according
-to some ordering other than one of their fields. Defining new syntax for \nonterminal{sortkey} extends the
-language to recognize these new sorting methods.
 
 While defining the interface of a source is the task of a DERP interpreter writer, some of the
 functionalities it will likely be required to have are described here.
@@ -57,11 +52,6 @@ source syntax and produce posts. Because source modules will likely deal with ve
 information that posts can be retrieved from, this interface will likely need to provide functionalities
 to start retrieving posts from a specific point in the database and to retrieve a finite number of results
 from there.
-
-
-\subsubsection{Sorting}
-If the source module defines some non-standard \nonterminal{sortkey} it will likely also need to provide some method by
-which the interpreter can sort things when that \nonterminal{sortkey} is specified.
 
 \subsubsection{General Matching}%%%%%%%%REFRENCE NUMBER%%%%%%%%%%%%%%%%%
 One of the special qualifiers defined in \ref{onexp}, the \nonterminal{on\_exp} qualifier, is used as a general-purpose

@@ -1,6 +1,6 @@
 \section{Basic Usage}
 While the above example is easy to understand, it doesn’t accomplish much. After all, we could just open up an internet browser and head to www.reddit.com.
-In the next section, we will explore ways to join multiple sources of information, ways to remove unwanted posts, and ways to reuse and compose queries.
+In the next section, we will explore ways to join multiple sources of information,  remove unwanted posts, and reuse and compose queries.
 
 \subsection{Fetching Posts from Various Sources}
 
@@ -10,15 +10,15 @@ the following snippet fetches the latest posts from the “worldnews” subreddi
 >>> create a new selection
 >>> add posts from subreddit "worldnews"
 \end{lstlisting}\end{minipage}
-We can combine multiple sources in a couple ways. The simplest way to do so is to use the \texttt{or} keyword. The \texttt{or} keyword may be repeatedly used to add posts
+We can combine multiple sources in a couple ways. The simplest way to do so is to use the \code{or} keyword. The \code{or} keyword may be repeatedly used to add posts
 from as many sources as needed.
 \newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "worldnews" or subreddit "news"
 \end{lstlisting}\end{minipage}
-As DERP strives to fit natural English, the word \texttt{and} can be used in place of \texttt{or} in this case. The phrase “add posts from subreddit “worldnews” and
-subreddit “news”” is commonly understood as “add posts from subreddit “worldnews”, and add posts from subreddit “news””, rather than “add posts that
-are in both subreddit “worldnews” and subreddit “news””.
+As DERP strives to fit natural English, the word \code{and} can be used in place of \code{or} in this case. The phrase “add posts from subreddit 'worldnews' and
+subreddit 'news'” is commonly understood as “add posts from subreddit 'worldnews', and add posts from subreddit 'news'”, rather than “add posts that
+are in both subreddit 'worldnews' and subreddit 'news'”.
 
 Alternatively, we can use multiple add statements to construct an equivalent query.
 \newline\begin{minipage}{\linewidth}\begin{lstlisting}
@@ -29,7 +29,7 @@ Alternatively, we can use multiple add statements to construct an equivalent que
 
 \subsection{Removing Posts from Various Sources}
 
-If we add posts from a given source, we can remove those posts later on using \texttt{remove}.
+If we add posts from a given source, we can remove those posts later on using \code{remove}.
 \newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "worldnews"

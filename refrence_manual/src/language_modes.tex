@@ -15,12 +15,12 @@ saved query, clear the currently saved result, or begin query/criteria creation 
 See section \ref{mainmode} for more details about Main Mode statements.
 %%%%%%REFRENCE A SECTION NUMBER%%%%%%%%%%%%
 
-Use a \nonterminal{create\_expression} with the selection keyword to switch from Main Mode to Selection Mode
+Use a \nonterminal{create\_expression} with the \terminal{selection} keyword to switch from Main Mode to Selection Mode
 \begin{itemize}[leftmargin=2in]
     \item[\nonterminal{create\_expression}] \bnf{:} \terminal{create} \nonterminal{article}\bnf{?} \nonterminal{new}\bnf{?} \terminal{selection}
 \end{itemize}
 
-Use a \nonterminal{create\_expression} with the criteria keyword to switch from Main Mode to Criteria Mode
+Use a \nonterminal{create\_expression} with the \terminal{criteria} keyword to switch from Main Mode to Criteria Mode
 \begin{itemize}[leftmargin=2in]
     \item[\nonterminal{create\_expression}] \bnf{:} \terminal{create} \nonterminal{article}\bnf{?} \nonterminal{new}\bnf{?} \terminal{criteria}
 \end{itemize}
@@ -32,7 +32,7 @@ To end your DERP program or close the DERP interpreter use a \nonterminal{stop\_
 
 \subsection{Selection Mode}
 
-Selection mode is used to create a new selection statement which can be executed at a later time from Main Mode.
+Selection mode is used to create a new selection statement which can be executed immediately from Selection Mode or at a later time from Main Mode.
 While in Selection Mode, statements which build the query, read the query statements, save the query, or exit
 Selection Mode are all valid. See section \ref{Selection_Mode} for more details about Selection Mode statements.
 %%%%REFREENCE A SECTION NUMBER %%%%%%%%%%%%%%%%%%
@@ -42,7 +42,7 @@ To exit Selection Mode (and return to Main Mode), use a \nonterminal{stop\_expre
 \subsection{Criteria Mode}
 Criteria mode is very similar to selection mode; it is used to create criteria rather than selections.
 The difference between a criterion and a selection is that a criterion cannot be specific to any source;
-it is a filter that can be applied to a selection, but it is not a valid selection on its own.
+it is a filter that can be applied to a selection, but it is not a valid selection on its own. (And, therefore, using \nonterminal{read\_expression} with a criterion is not valid)
 See section \ref{Criteria_Mode} for more details about Criteria Mode statements.
 %%%%%REFRENCE A SECTION NUMBER%%%%%%%%
 

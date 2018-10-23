@@ -47,7 +47,7 @@ $ python3 DERP.py
 >>> recall "finance news"
 \end{lstlisting}\end{minipage}
 \subsection{Composing with Criteria}
-It is common when querying for content, that we would want to apply the same qualifiers to a
+It is common when querying for content that we might want to apply the same qualifiers to a
 variety of selections. We can save ourselves the effort of retyping the same qualifiers multiple
 times by defining criteria. Criteria, singular criterion, are saved groups of qualifiers that
 can be used in selections or when defining other criteria.
@@ -68,7 +68,7 @@ We could compose this into a new criteria named "recent finance news" as follows
 And we can use this composed criteria in a selection as shown in the following example.
 \newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
->>> add posts from "worldnews" or "news" matching "recent finance news"
+>>> add posts from subreddit "worldnews" or subreddit "news" matching "recent finance news"
 >>> read
 \end{lstlisting}\end{minipage}
 By composing criteria with each other, we can create usefully complex queries without having
@@ -82,14 +82,4 @@ As with selections, \texttt{clear} and \texttt{recall} work on criteria in main 
 considering how to combine a criterion with a new selection, or when you want to remove an
 outdated criterion.
 
-\subsection{sorting the Results Returned by a Selection}
-The results returned from a selection may be prioritized by appending a sort to a \texttt{read} command.
-The default sorting is by date. The following example sorts the results from the saved selection
-"finance news" by the number of upvotes.
-\newline\begin{minipage}{\linewidth}\begin{lstlisting}
->>>create a new selection
->>> ...
->>> save as "finance news"
->>> stop
->>> read "finance news" sorted by upvotes
-\end{lstlisting}\end{minipage}
+Because they are very similar, it is important to keep in mind the differences between selections and criteria. Selections must contain at least one source to pull posts from, but criteria cannot specify any sources - they contain only qualifiers. As a result, selections can be read, but criteria cannot. On the flip side, sources cannot be used with the \code{matching} qualifier - only criteria can.
