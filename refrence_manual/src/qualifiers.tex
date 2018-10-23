@@ -32,17 +32,17 @@ If we want to query for certain phrases in our posts, we can use \texttt{with ..
 >>> add posts from subreddit "finance" with "stocks" in the body
 \end{lstlisting}\end{minipage}
 
-This selection will retrieve posts in which the word ‘stocks’ occurs, allowing us to view posts that relate to the stock market rather than, say, savings accounts.
+This selection will retrieve posts in which the word "stocks" occurs, allowing us to view posts that relate to the stock market rather than, say, savings accounts.
 
 
 \subsubsection{Query by Exact Phrase}
-If we know the exact title of an article we can find it in a given source using a \texttt{with the exact} expression.
+If we know the exact title of an article, we can find it in a given source using a \texttt{with the exact} expression.
 \newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "finance" with the exact title "CEO says part of October's market sell-off driven by programmatic trading"
 \end{lstlisting}\end{minipage}
 
-More generally, if we know the exact value of a given string field, we can use a with the exact expression to match against it.
+More generally, if we know the exact value of a given string field, we can use a \texttt{with the exact} expression to match against it.
 
 
 
@@ -52,9 +52,9 @@ If our source supports it, we can add qualifiers on the numeric properties of po
 >>> create a new selection
 >>> add posts from subreddit "finance" with exactly 500 upvotes
 \end{lstlisting}\end{minipage}
-This makes sure that our results have 500 upvotes, but it will retrieve results with only 500 upvotes. Usually, we would want to define a range of acceptable values for a numeric field. To accomplish this, we can use the ‘over’ and ‘under’ qualifiers.
+This makes sure that our results have 500 upvotes, but it will retrieve results with \underline{only} 500 upvotes. Usually, we would want to define a range of acceptable values for a numeric field. To accomplish this, we can use the \texttt{over} and \texttt{under} qualifiers.
 
-The \texttt{over} modifier requires that the returned posts have a numeric value \texttt{greater than} the value we asked for. In fact, the phrase greater than may be used instead of \texttt{over}.
+The \texttt{over} qualifier requires that the returned posts have a numeric value greater than the value we asked for. In fact, the phrase \texttt{greater than} may be used instead of \texttt{over}.
 \newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "finance" with over 500 upvotes
@@ -75,7 +75,7 @@ We can set what time period we want posts from by making a query on the date the
 >>> create a new selection
 >>> add posts from subreddit "finance" with a post date after october 20 2018
 \end{lstlisting}\end{minipage}
-Assuming the current date was October 21 2018 this would get us posts in the last day. We can also use \texttt{before} and \texttt{on} to limit ourselves to dates before and equal to the given date, respectively.
+Assuming the current date was October 21, 2018 this would get us posts in the last day. We can also use \texttt{before} and \texttt{on} to limit ourselves to dates before and equal to the given date, respectively.
 
 
 
@@ -89,7 +89,7 @@ We can also invert the meaning of a \texttt{with} statement by using \texttt{wit
 
 
 \subsection{The \texttt{On} Keyword}
-The \texttt{on} keyword makes it easy to perform a topic search. Another phrase that can be used in place of on is \texttt{about}. The actual functionality of \texttt{on} is implementation dependent. The original desktop implementation of \texttt{on} performs substring searches over the "topical" fields as defined by a given module. In this case, we can think about the the \texttt{on} as shorthand for multiple \texttt{with ... in the} qualifiers. Let’s use the same example as from the  \texttt{with ... in the} section above.
+The \texttt{on} keyword makes it easy to perform a topic search. Another phrase that can be used in place of on is \texttt{about}. The actual functionality of \texttt{on} is implementation dependent. The original desktop implementation of \texttt{on} performs substring searches over the "topical" fields as defined by a given module. In this case, we can think about the keyword \texttt{on} as shorthand for multiple \texttt{with ... in the} qualifiers. Let’s use the same example as in the  \texttt{with ... in the} section above.
 \newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "finance" on "stocks"
