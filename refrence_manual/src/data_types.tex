@@ -14,7 +14,7 @@ text in the body of the post. It is not required that this information be stored
 in the post object itself, however -- Retrieving this data can be delayed until it is
 requested by the DERP interpreter.
 
-\subsection{Source Modules}
+\subsection{Source Modules}\label{sourcemodules}
 The first data type that someone writing DERP code will encounter is the Source Module.
 Source Modules are not created directly by the programmer, but are loaded and unloaded to
 modify the language. A source consists of, at minimum, new syntax for defining how to
@@ -64,7 +64,7 @@ If the source module defines some non-standard \nonterminal{sortkey} it will lik
 which the interpreter can sort things when that \nonterminal{sortkey} is specified.
 
 \subsubsection{General Matching}%%%%%%%%REFRENCE NUMBER%%%%%%%%%%%%%%%%%
-One of the special qualifiers defined in [section \#], the \nonterminal{on\_exp} qualifier, is used as a general-purpose
+One of the special qualifiers defined in \ref{onexp}, the \nonterminal{on\_exp} qualifier, is used as a general-purpose
 match of posts against some text. If the interpreter does not implement some sort of generic matching
 routine, it will likely be the responsibility of source modules to determine if a post satisfies this
 generalized match.

@@ -1,34 +1,38 @@
 \section{Basic Usage}
-While the above example is easy to understand, it doesn’t accomplish much. After all, we could just open up a internet browser and head to www.reddit.com.
+While the above example is easy to understand, it doesn’t accomplish much. After all, we could just open up an internet browser and head to www.reddit.com.
 In the next section, we will explore ways to join multiple sources of information, ways to remove unwanted posts, and ways to reuse and compose queries.
-Fetching Posts from Various Sources
+
+\subsection{Fetching Posts from Various Sources}
+
 DERP handles fetching posts from various sources as provided by the loaded modules. The Reddit module provides a source for each subreddit. For example,
 the following snippet fetches the latest posts from the “worldnews” subreddit.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "worldnews"
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 We can combine multiple sources in a couple ways. The simplest way to do so is to use the \texttt{or} keyword. The \texttt{or} keyword may be repeatedly used to add posts
 from as many sources as needed.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "worldnews" or subreddit "news"
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 As DERP strives to fit natural English, the word \texttt{and} can be used in place of \texttt{or} in this case. The phrase “add posts from subreddit “worldnews” and
 subreddit “news”” is commonly understood as “add posts from subreddit “worldnews”, and add posts from subreddit “news””, rather than “add posts that
 are in both subreddit “worldnews” and subreddit “news””.
 
 Alternatively, we can use multiple add statements to construct an equivalent query.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "worldnews"
 >>> add posts from subreddit "news"
-\end{lstlisting}
-Removing Posts from Various Sources
-If we add posts from a given source, we can remove those posts later on using remove.
-\begin{lstlisting}
+\end{lstlisting}\end{minipage}
+
+\subsection{Removing Posts from Various Sources}
+
+If we add posts from a given source, we can remove those posts later on using \texttt{remove}.
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>> create a new selection
 >>> add posts from subreddit "worldnews"
 >>> add posts from subreddit "news"
 >>> remove posts from subreddit "worldnews"
-\end{lstlisting}
+\end{lstlisting}\end{minipage}

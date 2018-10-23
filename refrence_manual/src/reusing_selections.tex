@@ -3,7 +3,7 @@ So far we’ve made complex queries which allow us to quickly sort through Reddi
 However, we needed to create a new selection each time we wanted to execute a query.
 Thankfully, DERP allows us to save our queries for later use. Consider building up the
 following query which we use to keep up on finance news:
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 $ python3 DERP.py
 >>> load "reddit"
 >>> create a new selection
@@ -11,11 +11,11 @@ $ python3 DERP.py
 >>> remove posts with under 2000 upvotes
 >>> remove posts on "penny stocks"
 >>>
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 We certainly don’t want to re-enter the entire selection every time we want to fetch new data.
-In order to save this selection for later use, we use the \texttt{save} keyword. We can then exit out of 
+In order to save this selection for later use, we use the \texttt{save} keyword. We can then exit out of
 the criteria creation mode and use the \texttt{read} keyword in the main mode to execute the query.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 $ python3 DERP.py
 >>> load "reddit"
 >>> create a new selection
@@ -25,9 +25,9 @@ $ python3 DERP.py
 >>> save as "finance news"
 >>> stop
 >>> read "finance news"
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 If we’d like to remove a previously saved selection, we can use the \texttt{clear} keyword.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 $ python3 DERP.py
 >>> load "reddit"
 >>> create a new selection
@@ -35,9 +35,9 @@ $ python3 DERP.py
 >>> save as "finance news"
 >>> stop
 >>> clear "finance news"
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 Finally, if we want to know which statements were used to create a selection we can use the \texttt{recall} keyword.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 $ python3 DERP.py
 >>> load "reddit"
 >>> create a new selection
@@ -45,7 +45,7 @@ $ python3 DERP.py
 >>> save as "finance news"
 >>> stop
 >>> recall "finance news"
-\end{lstlisting}
+\end{lstlisting}\end{minipage}
 \subsection{Composing with Criteria}
 It is common when querying for content, that we would want to apply the same qualifiers to a
 variety of selections. We can save ourselves the effort of retyping the same qualifiers multiple
@@ -54,23 +54,23 @@ can be used in selections or when defining other criteria.
 
 We can save criteria in much the same way as we save selections. Any saved criteria can be
 added to the current selection or criteria using the \texttt{matching} qualifier. Take the following criterion.
-\begin{lstlisting}
->>>create a new criteria
->>>add posts with "stocks" in the body and without "penny stocks"
->>>save as "finance news"
-\end{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
+>>> create a new criteria
+>>> add posts with "stocks" in the body and without "penny stocks"
+>>> save as "finance news"
+\end{lstlisting}\end{minipage}
 We could compose this into a new criteria named "recent finance news" as follows.
-\begin{lstlisting}
->>>create a new criteria
->>>add posts matching "finance news" and with a post date after October 14 2018
->>>save as "recent finance news"
-\end{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
+>>> create a new criteria
+>>> add posts matching "finance news" and with a post date after October 14 2018
+>>> save as "recent finance news"
+\end{lstlisting}\end{minipage}
 And we can use this composed criteria in a selection as shown in the following example.
-\begin{lstlisting}
->>>create a new selection
->>>add posts from "worldnews" or "news" matching "recent finance news"
->>>read
-\end{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
+>>> create a new selection
+>>> add posts from "worldnews" or "news" matching "recent finance news"
+>>> read
+\end{lstlisting}\end{minipage}
 By composing criteria with each other, we can create usefully complex queries without having
 to retype many lines of qualifiers. Even better, we can use a criterion with as many selections or other criteria as we like.
 
@@ -86,10 +86,10 @@ outdated criterion.
 The results returned from a selection may be prioritized by appending a sort to a \texttt{read} command.
 The default sorting is by date. The following example sorts the results from the saved selection
 "finance news" by the number of upvotes.
-\begin{lstlisting}
+\newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>>create a new selection
->>>...
->>>save as "finance news"
->>>stop
->>>read "finance news" sorted by upvotes
-\end{lstlisting}
+>>> ...
+>>> save as "finance news"
+>>> stop
+>>> read "finance news" sorted by upvotes
+\end{lstlisting}\end{minipage}
