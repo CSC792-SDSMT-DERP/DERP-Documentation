@@ -55,21 +55,21 @@ can be used in selections or when defining other criteria.
 We can save criteria in much the same way as we save selections. Any saved criteria can be
 added to the current selection or criteria using the \texttt{matching} qualifier. Take the following criterion.
 \newline\begin{minipage}{\linewidth}\begin{lstlisting}
->>>create a new criteria
->>>add posts with "stocks" in the body and without "penny stocks"
->>>save as "finance news"
+>>> create a new criteria
+>>> add posts with "stocks" in the body and without "penny stocks"
+>>> save as "finance news"
 \end{lstlisting}\end{minipage}
 We could compose this into a new criteria named "recent finance news" as follows.
 \newline\begin{minipage}{\linewidth}\begin{lstlisting}
->>>create a new criteria
->>>add posts matching "finance news" and with a post date after October 14 2018
->>>save as "recent finance news"
+>>> create a new criteria
+>>> add posts matching "finance news" and with a post date after October 14 2018
+>>> save as "recent finance news"
 \end{lstlisting}\end{minipage}
 And we can use this composed criteria in a selection as shown in the following example.
 \newline\begin{minipage}{\linewidth}\begin{lstlisting}
->>>create a new selection
->>>add posts from "worldnews" or "news" matching "recent finance news"
->>>read
+>>> create a new selection
+>>> add posts from "worldnews" or "news" matching "recent finance news"
+>>> read
 \end{lstlisting}\end{minipage}
 By composing criteria with each other, we can create usefully complex queries without having
 to retype many lines of qualifiers. Even better, we can use a criterion with as many selections or other criteria as we like.
@@ -82,14 +82,14 @@ As with selections, \texttt{clear} and \texttt{recall} work on criteria in main 
 considering how to combine a criterion with a new selection, or when you want to remove an
 outdated criterion.
 
-\subsection{Sorting the Results Returned by a Selection}
+\subsection{sorting the Results Returned by a Selection}
 The results returned from a selection may be prioritized by appending a sort to a \texttt{read} command.
 The default sorting is by date. The following example sorts the results from the saved selection
 "finance news" by the number of upvotes.
 \newline\begin{minipage}{\linewidth}\begin{lstlisting}
 >>>create a new selection
->>>...
->>>save as "finance news"
->>>stop
->>>read "finance news" sorted by upvotes
+>>> ...
+>>> save as "finance news"
+>>> stop
+>>> read "finance news" sorted by upvotes
 \end{lstlisting}\end{minipage}
