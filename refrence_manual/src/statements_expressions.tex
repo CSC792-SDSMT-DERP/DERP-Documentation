@@ -25,7 +25,7 @@ The stop expression is simply one of the keywords stop or exit
     \myitem{\textit{stop\_expression}}{:} \texttt{stop \textbf{\textbar} exit}
 \end{description}
 
-\subsection{Main Mode}
+\subsection{Main Mode}\label{mainmode}
 The main mode allows users to load and unload modules and to delete, execute, and display the definitions
 of existing criteria and selections.
 
@@ -103,7 +103,7 @@ Create expressions take the form
     \myitem{\textit{create\_expression}}{:} \texttt{create \textit{article}\textbf{?} new\textbf{?} \textbf{(}selection \textbf{\textbar} criteria\textbf{)}}
 \end{description}
 
-\subsection{Criteria Mode}
+\subsection{Criteria Mode}\label{Criteria_Mode}
 After a \ecode{create\_expression} using the keyword \code{criteria} is read, all following statements will be interpreted using
 the criteria creation syntax defined here. Criteria mode ends when the stop statement is found.
 
@@ -238,7 +238,7 @@ for the programmer to specify the combined qualifier ‘with less than x field o
 
 
 
-\subsubsection{The on\_exp match}
+\subsubsection{The on\_exp match}\label{onexp}
 The \texttt{\textit{on\_exp}} is used to do a general match of a post against a topic. Unlike all of the qualifiers listed above, this qualifier is not explicitly
 tied to any one field in a post. The exact method of doing this check is implementation-defined, and may be part of the source module interface. This qualifier
 allows for matching in cases where the fields provided are insufficient and in cases where many fields would have to be specified in their own qualifiers to achieve
@@ -268,7 +268,7 @@ Saving a new criterion with the same name will NOT have any effect on previously
 
 
 
-\subsection{Selection Mode}
+\subsection{Selection Mode}\label{Selection_Mode}
 As mentioned above, selection mode is very similar to criteria mode, but has extra capabilities. While \ecode{add\_expressions} and \ecode{remove\_expressions} in Criteria Mode
 cannot be used to indicate posts from a specific source, both expressions CAN indicate one or more sources in Selection Mode. This is indicated by a grammar
 change in the selector nonterminal.

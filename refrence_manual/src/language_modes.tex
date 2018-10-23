@@ -12,7 +12,7 @@ a brief description of each mode, as well as the statements used to switch betwe
 As the name implies, this is the mode that a DERP interpreter should begin in. In this mode,
 statements that change the loaded plugins, output the instructions for a saved query, read a
 saved query, clear the currently saved result, or begin query/criteria creation are all valid.
-See section [section \#] for more details about Main Mode statements.
+See section \ref{mainmode} for more details about Main Mode statements.
 %%%%%%REFRENCE A SECTION NUMBER%%%%%%%%%%%%
 
 Use a \ecode{create\_expression} with the selection keyword to switch from Main Mode to Selection Mode
@@ -34,7 +34,7 @@ To end your DERP program or close the DERP interpreter use a \ecode{stop\_expres
 
 Selection mode is used to create a new selection statement which can be executed at a later time from Main Mode.
 While in Selection Mode, statements which build the query, read the query statements, save the query, or exit
-Selection Mode are all valid. See section [section \#] for more details about Selection Mode statements.
+Selection Mode are all valid. See section \ref{Selection_Mode} for more details about Selection Mode statements.
 %%%%REFREENCE A SECTION NUMBER %%%%%%%%%%%%%%%%%%
 
 To exit Selection Mode (and return to Main Mode), use a \ecode{stop\_expression}.
@@ -43,7 +43,7 @@ To exit Selection Mode (and return to Main Mode), use a \ecode{stop\_expression}
 Criteria mode is very similar to selection mode; it is used to create criteria rather than selections.
 The difference between a criterion and a selection is that a criterion cannot be specific to any source;
 it is a filter that can be applied to a selection, but it is not a valid selection on its own.
-See section [section \#] for more details about Criteria Mode statements.
+See section \ref{Criteria_Mode} for more details about Criteria Mode statements.
 %%%%%REFRENCE A SECTION NUMBER%%%%%%%%
 
 To exit Criteria Mode (and return to Main Mode), use a \ecode{stop\_expression}.
