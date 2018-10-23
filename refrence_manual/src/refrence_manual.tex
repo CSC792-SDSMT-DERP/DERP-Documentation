@@ -24,8 +24,19 @@ aboveskip=20pt,belowskip=20pt,}
 \patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
 \patchcmd{\ttlh@hang}{\noindent}{}{}{}
 \makeatother
+
+\usepackage[T1]{fontenc}
+\usepackage[scaled]{beramono}
+\usepackage{calc}
+
 \newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\ecode}[1]{\textit{\code{#1}}}
+\newcommand{\bcode}[1]{\textbf{\code{#1}}}
+
+\newcommand{\terminal}[1]{\code{#1}}
+\newcommand{\nonterminal}[1]{\ecode{#1}}
+\newcommand{\bnf}[1]{\bcode{#1}}
+
 %\renewcommand\maketitle{}
 
 % Give Table of Contents Hyperlinks
@@ -71,7 +82,6 @@ Stelter, Andrew
 
 \begin{document}
 
-
 \addcontentsline{toc}{section}{Title}
 \maketitle %%TODO: maketitle doesn't seem to be working
 
@@ -104,8 +114,6 @@ DERP is written in python 3. As such, DERP will run wherever python 3 is availab
 \input{basic_usage.tex}
 \input{qualifiers.tex}
 \input{reusing_selections.tex}
-
-
 
 \part{Refrence Guide}
 This section describes the DERP language, as outlined in the DERP Language white paper submitted

@@ -14,9 +14,10 @@ long as those parse rules are used within the additional definitions for the abo
 and do not redefine other DERP parse rules. Fields and sources are defined further below in [section \#].
 %%%     REFRENCE A LATER SECTION ABOVE      %%%%%%%%%%%
 For example, a source module for interfacing with a Reddit API module might define the following rules:
-\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
-    \myitem{\textit{source}}{:} \texttt{subreddit \textit{string} \textbf{\textbar} reddit}
-    \myitem{\textit{field}}{:} \texttt{title \textbf{\textbar} upvotes \textbf{\textbar} tags \textbf{\textbar} nsfw}
-    \myitem{\textit{nsfw}}{:} \texttt{nsfw \textbf{\textbar} not safe for work}
-    \myitem{\textit{sortkey}}{:} \texttt{popular}
-\end{description}
+
+\begin{itemize}[leftmargin=1in]
+    \item[\nonterminal{source}] \bnf{:} \terminal{subreddit} \nonterminal{string} \bnf{|} \terminal{reddit}
+    \item[\nonterminal{field}]\bnf{:} \nonterminal{title} \bnf{|} \terminal{upvotes} \bnf{|} \terminal{tags} \bnf{|} \nonterminal{nsfw} 
+    \item[\nonterminal{nsfw}] \bnf{:} \terminal{nsfw} \bnf{|} \terminal{not safe for work}
+    \item[\nonterminal{sortkey}] \bnf{:} \terminal{popular}  
+\end{itemize}

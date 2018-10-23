@@ -23,19 +23,19 @@ get results from online.
 
 Source modules are allowed to define new syntax rules for the following DERP nonterminals:
 \begin{itemize}
-\item \ecode{source}
-\item \ecode{field}
-\item \ecode{sortkey}
+\item \nonterminal{source}
+\item \nonterminal{field}
+\item \nonterminal{sortkey}
 \end{itemize}
 When input is found to match the rule a module provided for source, it indicates that the
 source module will be able to convert that input to a set of posts.
 
 Source modules are allowed to populate an arbitrary set of key-value fields in the posts
-they create. Defining new syntax for \ecode{field} extends the DERP parser to be able to recognize
+they create. Defining new syntax for \nonterminal{field} extends the DERP parser to be able to recognize
 the keys that the source module may populate in posts it retrieves.
 
 By default, every field is also a sort key; however, it may be desirable to sort posts according
-to some ordering other than one of their fields. Defining new syntax for \ecode{sortkey} extends the
+to some ordering other than one of their fields. Defining new syntax for \nonterminal{sortkey} extends the
 language to recognize these new sorting methods.
 
 While defining the interface of a source is the task of a DERP interpreter writer, some of the
@@ -49,7 +49,7 @@ DERP interpreter to get those changes to the grammar when the module is loaded.
 It is anticipated that the grammar definition provided by a module may involve extra definitions of
 the fields added. These extra definitions can include information such as the data types associated
 with those fields. Without such a definition, DERP interpreters will not be able to perform type-checking
-on \ecode{qualifiers} before attempting to executing them.
+on \nonterminal{qualifiers} before attempting to executing them.
 
 \subsubsection{Performing Queries}
 The most important part of a source module is its ability to take the input that was parsed according to
@@ -60,11 +60,11 @@ from there.
 
 
 \subsubsection{Sorting}
-If the source module defines some non-standard \ecode{sortkey} it will likely also need to provide some method by
-which the interpreter can sort things when that \ecode{sortkey} is specified.
+If the source module defines some non-standard \nonterminal{sortkey} it will likely also need to provide some method by
+which the interpreter can sort things when that \nonterminal{sortkey} is specified.
 
 \subsubsection{General Matching}%%%%%%%%REFRENCE NUMBER%%%%%%%%%%%%%%%%%
-One of the special qualifiers defined in [section \#], the \ecode{on\_exp} qualifier, is used as a general-purpose
+One of the special qualifiers defined in [section \#], the \nonterminal{on\_exp} qualifier, is used as a general-purpose
 match of posts against some text. If the interpreter does not implement some sort of generic matching
 routine, it will likely be the responsibility of source modules to determine if a post satisfies this
 generalized match.
@@ -72,7 +72,7 @@ generalized match.
 \subsection{Criterion}
 A criterion is a user-defined filter for specifying a subset of the Posts returned from executing a query.
 Criteria are created by entering Criteria Mode, making a number of statements to define the criterion, and
-then saving the criterion with a \ecode{save\_expression}.
+then saving the criterion with a \nonterminal{save\_expression}.
 
 \subsection{Selection}
 A selection follows many of the same rules as a Criterion, with the important difference that it can

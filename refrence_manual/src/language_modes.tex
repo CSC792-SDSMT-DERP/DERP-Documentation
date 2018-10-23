@@ -15,20 +15,20 @@ saved query, clear the currently saved result, or begin query/criteria creation 
 See section [section \#] for more details about Main Mode statements.
 %%%%%%REFRENCE A SECTION NUMBER%%%%%%%%%%%%
 
-Use a \ecode{create\_expression} with the selection keyword to switch from Main Mode to Selection Mode
-\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
-    \myitem{\textit{create\_expression}}{:} \texttt{create \textit{article}\textbf{?} new\textbf{?} selection}
-\end{description}
+Use a \nonterminal{create\_expression} with the selection keyword to switch from Main Mode to Selection Mode
+\begin{itemize}[leftmargin=2in]
+    \item[\nonterminal{create\_expression}] \bnf{:} \terminal{create} \nonterminal{article}\bnf{?} \nonterminal{new}\bnf{?} \terminal{selection}
+\end{itemize}
 
-Use a \ecode{create\_expression} with the criteria keyword to switch from Main Mode to Criteria Mode
-\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
-    \myitem{\textit{create\_expression}}{:} \texttt{create \textit{article}\textbf{?} new\textbf{?} criteria}
-\end{description}
+Use a \nonterminal{create\_expression} with the criteria keyword to switch from Main Mode to Criteria Mode
+\begin{itemize}[leftmargin=2in]
+    \item[\nonterminal{create\_expression}] \bnf{:} \terminal{create} \nonterminal{article}\bnf{?} \nonterminal{new}\bnf{?} \terminal{criteria}
+\end{itemize}
 
-To end your DERP program or close the DERP interpreter use a \ecode{stop\_expression} in Main Mode
-\begin{description}[labelindent=1cm,leftmargin=\onelen,labelwidth=1cm]
-    \myitem{\textit{stop\_expression}}{:} \texttt{stop \textbf{\textbar} exit}
-\end{description}
+To end your DERP program or close the DERP interpreter use a \nonterminal{stop\_expression} in Main Mode
+\begin{itemize}[leftmargin=2in]
+    \item[\nonterminal{stop\_expression}] \bnf{:} \terminal{stop} \bnf{|} \terminal{exit}
+\end{itemize}
 
 \subsection{Selection Mode}
 
@@ -37,7 +37,7 @@ While in Selection Mode, statements which build the query, read the query statem
 Selection Mode are all valid. See section [section \#] for more details about Selection Mode statements.
 %%%%REFREENCE A SECTION NUMBER %%%%%%%%%%%%%%%%%%
 
-To exit Selection Mode (and return to Main Mode), use a \ecode{stop\_expression}.
+To exit Selection Mode (and return to Main Mode), use a \nonterminal{stop\_expression}.
 
 \subsection{Criteria Mode}
 Criteria mode is very similar to selection mode; it is used to create criteria rather than selections.
@@ -46,4 +46,4 @@ it is a filter that can be applied to a selection, but it is not a valid selecti
 See section [section \#] for more details about Criteria Mode statements.
 %%%%%REFRENCE A SECTION NUMBER%%%%%%%%
 
-To exit Criteria Mode (and return to Main Mode), use a \ecode{stop\_expression}.
+To exit Criteria Mode (and return to Main Mode), use a \nonterminal{stop\_expression}.
