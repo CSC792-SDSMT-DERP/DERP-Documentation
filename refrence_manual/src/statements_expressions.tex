@@ -79,7 +79,7 @@ Read expressions follow the syntax
 \begin{itemize}[leftmargin=2in]
     \item[\nonterminal{read\_expression}] \bnf{:} \terminal{read} \nonterminal{string} \nonterminal{sort\_predicate}\bnf{?}
     \item[\nonterminal{sort\_predicate}] \bnf{:} \bnf{(}\terminal{sorted} \bnf{|} \terminal{ordered}\bnf{)} \terminal{by} \nonterminal{sortkey} \nonterminal{order}\bnf{?}
-    \item[\nonterminal{order}] \bnf{:} \terminal{ascending} \bnf{|} \terminal{descending} 
+    \item[\nonterminal{order}] \bnf{:} \terminal{ascending} \bnf{|} \terminal{descending}
 \end{itemize}
 
 The string given immediately after the read keyword should correspond to a previously created selection.
@@ -137,7 +137,7 @@ The most important expressions in criteria mode are the \nonterminal{add\_expres
 executable statements that are used to filter the list of elements. Both expressions have similar form
 \begin{itemize}[leftmargin=2in]
     \item[\nonterminal{add\_expression}] \bnf{:} \terminal{add posts} \nonterminal{selector}
-    \item[\nonterminal{remove\_expression}] \bnf{:} \terminal{remove posts} \nonterminal{selector} 
+    \item[\nonterminal{remove\_expression}] \bnf{:} \terminal{remove posts} \nonterminal{selector}
 \end{itemize}
 
 Both expressions use the selector, which is a series of one or more qualifiers strung together to indicate what
@@ -145,14 +145,14 @@ items from a list of posts should be accepted by the criteria.
 \begin{itemize}[leftmargin=2in]
     \item[\nonterminal{selector}] \bnf{:} \nonterminal{qualifier\_or}
     \item[\nonterminal{qualifier\_or}] \bnf{:} \nonterminal{qualifier\_or} \terminal{or} \nonterminal{qualifier\_and} \bnf{|} \nonterminal{qualifier\_and}
-    \item[\nonterminal{qualifier\_and}] \bnf{:} \nonterminal{qualifier\_and} \terminal{and} \nonterminal{qualifier} \bnf{|} \nonterminal{qualifier}  
+    \item[\nonterminal{qualifier\_and}] \bnf{:} \nonterminal{qualifier\_and} \terminal{and} \nonterminal{qualifier} \bnf{|} \nonterminal{qualifier}
 \end{itemize}
 
 Qualifiers can be combined using the words ‘and’ and ‘or’. Precedence rules for these combine keywords follow standard
 C \textbar\textbar and \&\& precedence. That is, ‘and’ is higher precedence than ‘or’, and both are left-associative. Forcing precedence
 through the use of parentheses, as C allows, is not permitted in DERP.
 
-\nonterminal{qualifiers} can be any of a number of defined checks. These checks can look at any field exposed as part of the post and
+\nonterminal{qualifiers} can be any number of defined checks. These checks can look at any field exposed as part of the post and
 match it against the requirement given by the code. Some examples of valid qualifiers are \terminal{“with a date before 1990”},
 \terminal{“which are nsfw”}, and \terminal{“with over twenty upvotes”}\footnote{Provided that source modules are loaded which define the syntax: \hskip .25in
     \nonterminal{field} \bnf{:} \nonterminal{nsfw} \bnf{|} \nonterminal{upvotes} \bnf{|} \nonterminal{date}}
@@ -188,7 +188,7 @@ that month. The keywords on, after, and before correspond to the conventional nu
     \item[\nonterminal{date}] \bnf{:} \bnf{(} \terminal{month} \terminal{day} \bnf{?} \bnf{)?} \terminal{year}
     \item[\nonterminal{year}] \bnf{:} \nonterminal{digit digit digit digit}
     \item[\nonterminal{month}] \bnf{:} \terminal{january} \bnf{|} \terminal{february} \bnf{|} \terminal{march} \bnf{|} \terminal{april} \bnf{|} \terminal{may} \bnf{|} \terminal{june} \bnf{|} \terminal{july} \bnf{|} \terminal{august} \bnf{|} \terminal{september} \bnf{|} \terminal{october} \bnf{|} \terminal{november} \bnf{|} \terminal{december}
-    \item[\nonterminal{day}] \bnf{:} \bnf{[0-3]} \nonterminal{digit} 
+    \item[\nonterminal{day}] \bnf{:} \bnf{[0-3]} \nonterminal{digit}
 \end{itemize}
 
 \subsubsection{substring\_check}
@@ -197,7 +197,7 @@ of the data for that field. For example, if there is a field called “tags”, 
 contains the word “saved”. The qualifier to do that operation might look something like this: \texttt{‘with “saved” in the tags’}
 \begin{itemize}[leftmargin=2in]
     \item[\nonterminal{qualifier}] \bnf{:} \nonterminal{with\_exp string substring\_check field}
-    \item[\nonterminal{substring\_check}] \bnf{:} \terminal{in the}\bnf{?} 
+    \item[\nonterminal{substring\_check}] \bnf{:} \terminal{in the}\bnf{?}
 \end{itemize}
 
 \subsubsection{boolean\_check}
@@ -226,7 +226,7 @@ Number checks are used to do numerical comparisons on the data in post fields.
     \item[\nonterminal{number\_check}] \bnf{:} \nonterminal{with\_exp}\bnf{?} \terminal{exactly} \bnf{|} \nonterminal{above\_expression} \bnf{|} \nonterminal{below\_expression} \\ \bnf{|} \terminal{roughly}
     \item[\nonterminal{above\_expression}] \bnf{:} \terminal{over} \bnf{|} \terminal{greater than}
     \item[\nonterminal{below\_expression}] \bnf{:} \terminal{under} \bnf{|} \terminal{less than}
-\end{itemize} 
+\end{itemize}
 
 The keyword exactly, and expressions \nonterminal{above\_expression} and \nonterminal{below\_expression} are mapped to the traditional mathematical operations ==, $>$, and $<$, respectively.
 The keyword roughly indicates a match within some epsilon of the specified value. The value of epsilon used for a roughly match is implementation-defined.
@@ -243,7 +243,7 @@ the same result.
 
 \begin{itemize}[leftmargin=2in]
     \item[\nonterminal{qualifier}] \bnf{:} \nonterminal{on\_exp string}
-    \item[\nonterminal{on\_exp}] \bnf{:} \terminal{on} \bnf{|} \terminal{about} 
+    \item[\nonterminal{on\_exp}] \bnf{:} \terminal{on} \bnf{|} \terminal{about}
 \end{itemize}
 
 \subsubsection{matching}
@@ -270,7 +270,7 @@ change in the selector nonterminal.
 
 \begin{itemize}[leftmargin=2in]
     \item[\nonterminal{selector}] \bnf{:} \nonterminal{qualifier\_or} \bnf{|} \terminal{from} \nonterminal{source qualifier\_or}\bnf{?}
-    \item[\nonterminal{source}] \bnf{:} \nonterminal{source} \bnf{(} \terminal{and} \bnf{|} \terminal{or} \bnf{)} \nonterminal{source}     
+    \item[\nonterminal{source}] \bnf{:} \nonterminal{source} \bnf{(} \terminal{and} \bnf{|} \terminal{or} \bnf{)} \nonterminal{source}
 \end{itemize}
 
 As this Selection Mode syntax shows, selectors may contain one or more sources, and if any sources are specified, then qualifiers are not required. Although
