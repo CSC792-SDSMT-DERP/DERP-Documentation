@@ -21,7 +21,7 @@ or Criteria mode, this means returning to the Main Mode. In Main Mode, the Stop 
 end the DERP program. If DERP code is being run directly through an interactive interpreter, this should
 end the interpreter loop.
 
-The stop expression is simply one of the keywords stop or exit
+The stop expression is simply one of the keywords \terminal{stop} or \terminal{exit}
 \begin{itemize}[leftmargin=2in]
     \item[\nonterminal{stop\_expression}] \bnf{:} \terminal{stop} \bnf{|} \terminal{exit}
 \end{itemize}
@@ -60,40 +60,32 @@ criteria or selection. It follows the syntax
     \item[\nonterminal{recall\_expression}] \bnf{:} \terminal{recall} \nonterminal{string}
 \end{itemize}
 
-The string following the keyword recall is the name that was given in a preceding save expression from
+The string following the keyword recall is the name that was given in a preceding \nonterminal{save\_expression} from
 within Criteria Mode or Selection Mode.
 
 \subsubsection{Clear}
 The clear expression is used to delete a created Criteria or Selection. After a name is used with the
-\nonterminal{clear\_expression}, it will not be valid in any future \nonterminal{read\_expression}, \nonterminal{recall\_expression}, or \nonterminal{match\_expression}
+\nonterminal{clear\_expression}, it will not be valid in any future \nonterminal{read\_expression}, \nonterminal{recall\_expression}, or\\ \nonterminal{match\_expression}
 unless a \nonterminal{create\_expression} is used to assign the string a new selection or criterion
 \begin{itemize}[leftmargin=2in]
     \item[\nonterminal{clear\_expression}] \bnf{:} \terminal{clear} \nonterminal{string}
 \end{itemize}
 
 \subsubsection{Read}
-Read expressions are used to execute a selection and output the resulting Posts. Optionally, a read
-expression can have a sort predicate, which defines the order that the resulting Posts should be outputted.
+Read expressions are used to execute a selection and output the resulting Posts.
 
 Read expressions follow the syntax
 \begin{itemize}[leftmargin=2in]
-    \item[\nonterminal{read\_expression}] \bnf{:} \terminal{read} \nonterminal{string} \nonterminal{sort\_predicate}\bnf{?}
-    \item[\nonterminal{sort\_predicate}] \bnf{:} \bnf{(}\terminal{sorted} \bnf{|} \terminal{ordered}\bnf{)} \terminal{by} \nonterminal{sortkey} \nonterminal{order}\bnf{?}
-    \item[\nonterminal{order}] \bnf{:} \terminal{ascending} \bnf{|} \terminal{descending} 
+    \item[\nonterminal{read\_expression}] \bnf{:} \terminal{read} \nonterminal{string}
 \end{itemize}
 
 The string given immediately after the read keyword should correspond to a previously created selection.
-Any field defined by a source module is to be a valid \nonterminal{sortkey}, however source modules may define additional
-syntax for \nonterminal{sortkey} to allow sorting by more context-specific means. Any posts returned from the selection
-for which the \nonterminal{sortkey} is not relevant (for example, if multiple sources are used in the selection, and the
-\nonterminal{sortkey} is specific to one of the sources) should be sorted to the end of the list in any order.
 
 The DERP language does not define what constitutes ‘outputting posts’ after they are found using a query.
 This leaves the interpreter open to any number of formats for conveying post information to the user.
 It should be noted that DERP selection semantics guarantee that determining which posts can be done on a
 group of posts, and after they are processed they do not need to be re-processed if another group of posts
-is retrieved. This allows interpreters to work with stream sources that can provide a \st{semi-infinite} very
-large result as multiple smaller pieces.
+is retrieved. This allows interpreters to work with stream sources that can provide an effectively infinite result as multiple smaller pieces.
 
 \subsubsection{Create}
 The create expression is used exclusively to trigger either selection mode or criteria mode, depending upon
@@ -106,7 +98,7 @@ Create expressions take the form
 
 \subsection{Criteria Mode}\label{Criteria_Mode}
 After a \nonterminal{create\_expression} using the keyword \terminal{criteria} is read, all following statements will be interpreted using
-the criteria creation syntax defined here. Criteria mode ends when the stop statement is found.
+the criteria creation syntax defined here. Criteria mode ends when a \nonterminal{stop\_expression} is found.
 
 Valid expressions in criteria mode can used to add things to the filter or remove them, read back the criteria so
 far, and save the criteria with a name.
@@ -167,8 +159,8 @@ match it against the requirement given by the code. Some examples of valid quali
     \bnf{|} \nonterminal{matching string}\\
 \end{itemize}
 
-With the exception of the matching and \nonterminal{on\_exp} qualifiers, each of the qualifiers listed here is used to check a single piece of
-information against a \textit{field} associated with a post. Below are the definitions of sub-expressions used in the qualifiers followed
+With the exception of the \terminal{matching} and \nonterminal{on\_exp} qualifiers, each of the qualifiers listed here is used to check a single piece of
+information against a \nonterminal{field} associated with a post. Below are the definitions of sub-expressions used in the qualifiers followed
 by the definitions of each of the different \nonterminal{*\_check} qualifier rules.
 
 \begin{itemize}[leftmargin=2in]
@@ -178,21 +170,21 @@ by the definitions of each of the different \nonterminal{*\_check} qualifier rul
 \subsubsection{date\_check}
 Date checks, along with the date production, are used in a qualifier to indicate that you would like to filter posts by the date that
 they were published. The date check can be used to get points from an exact date, or a range beginning or ending at a specific date.
-Ranges between two separate dates can be achieved through combining multiple date \nonterminal{qualifiers} with the keywords and and or.
+Ranges between two separate dates can be achieved through combining multiple date \nonterminal{qualifiers} with the keywords \terminal{and} and \terminal{or}.
 
 Dates contain, at minimum, some year; but they may contain a month, and if they contain a month, they may contain a numbered day of
 that month. The keywords on, after, and before correspond to the conventional numerical comparisons =, $>$, and $<$.
 \begin{itemize}[leftmargin=2in]
     \item[\nonterminal{qualifier}] \bnf{:} \nonterminal{with\_exp article field date\_check date}
     \item[\nonterminal{date\_check}] \bnf{:} \terminal{date} \bnf{(}\terminal{on} \bnf{|} \terminal{after} \bnf{|} \terminal{before}\bnf{)}
-    \item[\nonterminal{date}] \bnf{:} \bnf{(} \terminal{month} \terminal{day} \bnf{?} \bnf{)?} \terminal{year}
+    \item[\nonterminal{date}] \bnf{:} \bnf{(} \nonterminal{month} \nonterminal{day} \bnf{?} \bnf{)?} \nonterminal{year}
     \item[\nonterminal{year}] \bnf{:} \nonterminal{digit digit digit digit}
     \item[\nonterminal{month}] \bnf{:} \terminal{january} \bnf{|} \terminal{february} \bnf{|} \terminal{march} \bnf{|} \terminal{april} \bnf{|} \terminal{may} \bnf{|} \terminal{june} \bnf{|} \terminal{july} \bnf{|} \terminal{august} \bnf{|} \terminal{september} \bnf{|} \terminal{october} \bnf{|} \terminal{november} \bnf{|} \terminal{december}
     \item[\nonterminal{day}] \bnf{:} \bnf{[0-3]} \nonterminal{digit} 
 \end{itemize}
 
 \subsubsection{substring\_check}
-Substring checks are used the compare a string against one of the fields associated with the post and return true if the string is part
+Substring checks are used the compare a string against one of the fields associated with the post and accept the post if the string is part
 of the data for that field. For example, if there is a field called “tags”, one might use the substring check to determine if “tags”
 contains the word “saved”. The qualifier to do that operation might look something like this: \texttt{‘with “saved” in the tags’}
 \begin{itemize}[leftmargin=2in]
@@ -223,17 +215,17 @@ generated the post populates the field ‘author’
 Number checks are used to do numerical comparisons on the data in post fields.
 \begin{itemize}[leftmargin=2in]
     \item[\nonterminal{qualifier}] \bnf{:} \nonterminal{number\_check number field}
-    \item[\nonterminal{number\_check}] \bnf{:} \nonterminal{with\_exp}\bnf{?} \terminal{exactly} \bnf{|} \nonterminal{above\_expression} \bnf{|} \nonterminal{below\_expression} \\ \bnf{|} \terminal{roughly}
+    \item[\nonterminal{number\_check}] \bnf{:} \nonterminal{with\_exp}\bnf{? (} \terminal{exactly} \bnf{|} \nonterminal{above\_expression} \bnf{|} \nonterminal{below\_expression} \\ \bnf{|} \terminal{roughly} \bnf{)}
     \item[\nonterminal{above\_expression}] \bnf{:} \terminal{over} \bnf{|} \terminal{greater than}
     \item[\nonterminal{below\_expression}] \bnf{:} \terminal{under} \bnf{|} \terminal{less than}
 \end{itemize} 
 
-The keyword exactly, and expressions \nonterminal{above\_expression} and \nonterminal{below\_expression} are mapped to the traditional mathematical operations ==, $>$, and $<$, respectively.
-The keyword roughly indicates a match within some epsilon of the specified value. The value of epsilon used for a roughly match is implementation-defined.
+The keyword \terminal{exactly}, and expressions \nonterminal{above\_expression} and \nonterminal{below\_expression} are mapped to the traditional mathematical operations ==, $>$, and $<$, respectively.
+The keyword \terminal{roughly} indicates a match within some epsilon of the specified value. The value of epsilon used for a roughly match is implementation-defined.
 
 Note that defining the \nonterminal{number\_check} production using \nonterminal{with\_exp} provides some additional flexibility in how qualifiers can be used to match numbers. To match a
-number in a way analogous to the standard >= operation, DERP code could specify the single qualifier \terminal{‘without less than x field’}; however, it may be more natural
-for the programmer to specify the combined qualifier ‘with less than x field or with exactly x field’.
+number in a way analogous to the standard >= operation, DERP code could specify the single qualifier \terminal{‘without less than x \nonterminal{field}’}; however, it may be more natural
+for the programmer to specify the combined qualifier \terminal{‘with less than x \nonterminal{field} or with exactly x \nonterminal{field}’}.
 
 \subsubsection{The on\_exp match}\label{onexp}
 The \texttt{\textit{on\_exp}} is used to do a general match of a post against a topic. Unlike all of the qualifiers listed above, this qualifier is not explicitly
@@ -243,7 +235,7 @@ the same result.
 
 \begin{itemize}[leftmargin=2in]
     \item[\nonterminal{qualifier}] \bnf{:} \nonterminal{on\_exp string}
-    \item[\nonterminal{on\_exp}] \bnf{:} \terminal{on} \bnf{|} \terminal{about} 
+    \item[\nonterminal{on\_exp}] \bnf{:} \terminal{not}\bnf{?} \bnf{(}\terminal{on} \bnf{|} \terminal{about}\bnf{)}
 \end{itemize}
 
 \subsubsection{matching}
@@ -258,7 +250,7 @@ used to group qualifiers together and then use them to create arbitrarily comple
 
 For the matching qualifier to be valid, the string must meet a single requirement:
 \begin{itemize}
-\item It must be the name that a criterion was saved in using the save\_expression from within criteria creation mode prior to the current DERP command
+\item It must be the name that a criterion was saved in using the \nonterminal{save\_expression} from within criteria creation mode prior to the current DERP command
 \end{itemize}
 When the matching qualifier is encountered, the current state of the criterion specified is copied, and stored with the criteria being created.
 Saving a new criterion with the same name will NOT have any effect on previously defined matching qualifiers.
@@ -266,19 +258,20 @@ Saving a new criterion with the same name will NOT have any effect on previously
 \subsection{Selection Mode}\label{Selection_Mode}
 As mentioned above, selection mode is very similar to criteria mode, but has extra capabilities. While \nonterminal{add\_expressions} and \nonterminal{remove\_expressions} in Criteria Mode
 cannot be used to indicate posts from a specific source, both expressions CAN indicate one or more sources in Selection Mode. This is indicated by a grammar
-change in the selector nonterminal.
+change in the selector nonterminal. A further change in Selection Mode is that using the \nonterminal{read\_expression} (with no \nonterminal{string} name) is valid in Selection Mode, and will immediately perform the query that has been built thus far.
 
 \begin{itemize}[leftmargin=2in]
     \item[\nonterminal{selector}] \bnf{:} \nonterminal{qualifier\_or} \bnf{|} \terminal{from} \nonterminal{source qualifier\_or}\bnf{?}
-    \item[\nonterminal{source}] \bnf{:} \nonterminal{source} \bnf{(} \terminal{and} \bnf{|} \terminal{or} \bnf{)} \nonterminal{source}     
+    \item[\nonterminal{source}] \bnf{:} \nonterminal{source} \bnf{(} \terminal{and} \bnf{|} \terminal{or} \bnf{)} \nonterminal{source} 
+    \item[\nonterminal{read\_expression}] \bnf{:} \terminal{read}     
 \end{itemize}
 
 As this Selection Mode syntax shows, selectors may contain one or more sources, and if any sources are specified, then qualifiers are not required. Although
-sources are defined as being combined through the keywords and and or just like qualifiers, there is no precedence associated with the keywords when they
+sources are defined as being combined through the keywords \terminal{and} and \terminal{or} just like qualifiers, there is no precedence associated with the keywords when they
 are used to combine sources. Combining sources with either keyword will always indicate posts that are found in either of the sources. While this may at
 first seem like an odd specification to have, it makes more sense in the context that DERP is intended to mimic natural language.
 
-The definition of source defined in Selection Mode is really only a utility syntax. The definitions of the nonterminal that will be matched in input come
+The syntax for \nonterminal{source} defined in Selection Mode is really only a utility syntax. The definitions of the nonterminal that will be matched in input come
 from source modules that are loaded.
 
 Because \nonterminal{remove\_expressions} in selection mode are no longer limited to the fields of posts, but can also remove posts based solely on their origin, ambiguities
