@@ -1,0 +1,118 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{comment}
+
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{upquote}
+\usepackage{listings}
+\lstset{upquote=true,
+frame=single,
+breaklines=true,
+postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+aboveskip=20pt,belowskip=20pt,}
+
+\usepackage{bold-extra}
+\usepackage{soul}
+\usepackage{titlesec}       % Lines under Sections
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+
+\usepackage{etoolbox}       % Because titlesec removes section numbering -\_-
+\makeatletter
+\patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
+\patchcmd{\ttlh@hang}{\noindent}{}{}{}
+\makeatother
+
+\usepackage[T1]{fontenc}
+\usepackage[scaled]{beramono}
+\usepackage{calc}
+
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\ecode}[1]{\textit{\code{#1}}}
+\newcommand{\bcode}[1]{\textbf{\code{#1}}}
+
+\newcommand{\terminal}[1]{\code{#1}}
+\newcommand{\nonterminal}[1]{\ecode{#1}}
+\newcommand{\bnf}[1]{\bcode{#1}}
+
+%\renewcommand\maketitle{}
+
+% Give Table of Contents Hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=blue
+}
+\pagenumbering{gobble}
+% \pagenumbering{roman} % set the numbering style to lowercase letter\autoref*{#1}
+\newcommand*{\fullref}[1]{\hyperref[{#1}]{section \ref*{#1} \nameref*{#1} }}
+\title{\textbf{The Dictation Evaluation Reddit Parser \\ Language Tutorial}}
+
+\author{
+Garcia, Benjamin \and
+Lembke, Logan \and
+Smith, Christopher \and
+Stelter, Andrew
+}
+\date{\today}
+
+
+%\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+
+\usepackage{enumitem}
+\newlength\onelen
+\newlength\twolen
+
+\setlength\onelen{3.5cm}
+\setlength\twolen{1cm}
+\newcommand{\myitem}[2]{%
+  \item[\texttt{#1}] \makebox[\twolen][l]{\texttt{#2}}%
+  }
+
+\begin{document}
+
+\addcontentsline{toc}{section}{Title}
+\maketitle %%TODO: maketitle doesn't seem to be working
+
+\newpage
+\tableofcontents
+% \addcontentsline{toc}{section}{Table of Contents}
+
+\pagenumbering{roman}   % Set TOC page numbering to lowercase roman numerals
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% INTRO SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+% \hypersetup{
+%     citecolor=blue,
+%     filecolor=black,
+%     linkcolor=blue,
+%     urlcolor=blue
+% }
+\pagenumbering{arabic}  % Set content page numbering to arabic numerals
+
+
+\part{Language Tutorial}
+\section{Introduction}
+This tutorial aims to quickly teach those skilled in the art how to use DERP to find, filter, and consume internet content. DERP is a Domain Specific Language (DSL) suited to information retrieval using natural English. For the purpose of this tutorial we will assume the existence of a ‘Reddit’ submodule which allows for retrieving data from www.reddit.com.
+
+\subsection{Target Systems}
+DERP is written in Python 3. As such, DERP will run wherever Python 3 is available. The DERP language is intended to be adapted to multiple platforms such as smart home devices, desktop computers, and mobile phones; however, this document specifically covers the desktop implementation of DERP. Because DERP is for querying online locations, most plugin modules will likely require a network connection.
+\input{getting_started.tex}
+\input{basic_usage.tex}
+\input{qualifiers.tex}
+\input{reusing_selections.tex}
+
+\end{document}
