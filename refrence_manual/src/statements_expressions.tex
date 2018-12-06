@@ -235,11 +235,7 @@ the same result.
 
 \begin{itemize}[leftmargin=2in]
     \item[\nonterminal{qualifier}] \bnf{:} \nonterminal{on\_exp string}
-<<<<<<< HEAD
-    \item[\nonterminal{on\_exp}] \bnf{:} \terminal{on} \bnf{|} \terminal{about}
-=======
     \item[\nonterminal{on\_exp}] \bnf{:} \terminal{not}\bnf{?} \bnf{(}\terminal{on} \bnf{|} \terminal{about}\bnf{)}
->>>>>>> f82dda53510cbd3e80e5074cc567fa760688afc3
 \end{itemize}
 
 \subsubsection{matching}
@@ -266,12 +262,8 @@ change in the selector nonterminal. A further change in Selection Mode is that u
 
 \begin{itemize}[leftmargin=2in]
     \item[\nonterminal{selector}] \bnf{:} \nonterminal{qualifier\_or} \bnf{|} \terminal{from} \nonterminal{source qualifier\_or}\bnf{?}
-<<<<<<< HEAD
-    \item[\nonterminal{source}] \bnf{:} \nonterminal{source} \bnf{(} \terminal{and} \bnf{|} \terminal{or} \bnf{)} \nonterminal{source}
-=======
     \item[\nonterminal{source}] \bnf{:} \nonterminal{source} \bnf{(} \terminal{and} \bnf{|} \terminal{or} \bnf{)} \nonterminal{source}
     \item[\nonterminal{read\_expression}] \bnf{:} \terminal{read}
->>>>>>> f82dda53510cbd3e80e5074cc567fa760688afc3
 \end{itemize}
 
 As this Selection Mode syntax shows, selectors may contain one or more sources, and if any sources are specified, then qualifiers are not required. Although
